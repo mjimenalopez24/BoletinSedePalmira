@@ -9,6 +9,7 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
+    - Aspirantes.qmd
     - summary.qmd
     - references.qmd
 
