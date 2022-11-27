@@ -1,10 +1,11 @@
----
-output:
-  html_document: default
----
+# Aspirantes y Admitidos {#sec-Aspirantes}
+
 <!-- CARGAR BASE DE ASPIRANTES -->
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE}
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
 
 # librerías requeridas
 library(UnalData)
@@ -47,8 +48,6 @@ AdmitidosPos <- AspirantesPos %>% filter(MOD_INS == "Regular", ADMITIDO == "Sí"
 tema <- 5
 ```
 
-# Aspirantes y Admitidos {#Aspirantes}
-
 Este capítulo presenta el consolidado de las principales características asociadas a la información estadística oficial de los aspirantes y admitidos a pregrado y postgrado en la **Sede Palmira** de la Universidad Nacional de Colombia. A continuación, se presenta una breve descripción de las secciones que hacen parte de este capítulo, así como la ubicación del sitio web en donde se presentan las definiciones, los estándares y las codificaciones/clasificaciones que hacen parte de la información acá contenida (*metadatos*) y cuya exploración y lectura, sin duda, facilitará el entendimiento de las cifras asociadas a las poblaciones de aspirantes y admitidos en esta sede de la Universidad. 
 
 
@@ -83,7 +82,13 @@ En la parte final de esta sección se presenta una tabla agregada con las combin
 
 A continuación, la Figura \@ref(fig:F1AspPre), presenta la evolución histórica -*desde el periodo 2008*-, del total de aspirantes a pregrado en la sede.
 
-```{r F1AspPre, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F1AspPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Msj <- "Información disponible desde 2008-1"
 
@@ -104,11 +109,15 @@ Agregar(TOTAL ~ YEAR + SEMESTRE,
 
 ### Información por sexo
 
-A continuación, las figuras \@ref(fig:F2AspPre) y \@ref(fig:F3AspPre) presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes a pregrado según el sexo biológico.
+A continuación, las figuras @F2AspPre y @F3AspPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes a pregrado según el sexo biológico.
 
-```{r F2AspPre, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
-
-col <- c( "#f15a24", "#8cc63f") # naranja, hombres 
+```{r}
+#| label: F2AspPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Agregar(SEXO ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
@@ -116,7 +125,6 @@ Agregar(SEXO ~ YEAR + SEMESTRE,
                     datos = AspirantesPre,
                     textNA = "Sin información") %>% 
            Plot.Series(categoria = "SEXO", 
-              colores = col , 
               titulo = "Evolución del número de aspirantes a pregrado por sexo",
               labelY = "Número de aspirantes",
               ylim = c(0,NaN),
@@ -126,7 +134,13 @@ Agregar(SEXO ~ YEAR + SEMESTRE,
 
 <br>
 
-```{r F3AspPre, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F3AspPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Agregar(SEXO ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
@@ -136,7 +150,6 @@ Agregar(SEXO ~ YEAR + SEMESTRE,
         Plot.Torta(categoria  = "SEXO",
            ano        = ano,
            periodo    = semestre,
-           colores    = col,
            titulo     = "Distribución de aspirantes a pregrado por sexo",
            addPeriodo = TRUE,
            libreria   = "highcharter",
@@ -148,10 +161,16 @@ Agregar(SEXO ~ YEAR + SEMESTRE,
 
 ### Información por edad
 
-A continuación, las figuras \@ref(fig:F4AspPre) y \@ref(fig:F5AspPre) presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes a pregrado por grupos de edad.
+A continuación, las figuras @F4AspPre y @F5AspPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes a pregrado por grupos de edad.
 
-```{r F4AspPre, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
-
+```{r}
+#| label: F4AspPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+   
 Agregar(CAT_EDAD ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
                     intervalo = list(c(2008, 1), c(ano, semestre)),
@@ -167,7 +186,13 @@ Agregar(CAT_EDAD ~ YEAR + SEMESTRE,
 
 <br>
 
-```{r F5AspPre, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F5AspPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Agregar(CAT_EDAD ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
@@ -191,9 +216,15 @@ Agregar(CAT_EDAD ~ YEAR + SEMESTRE,
 
 ### Información por estrato socioeconómico
 
-A continuación, las figuras \@ref(fig:F6AspPre) y \@ref(fig:F7AspPre) presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes a pregrado según el estrato socioeconómico de las viviendas en donde estos residen.
+A continuación, las figuras @F6AspPre y @F7AspPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes a pregrado según el estrato socioeconómico de las viviendas en donde estos residen.
 
-```{r F6AspPre, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F6AspPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Agregar(ESTRATO ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
@@ -210,7 +241,14 @@ Agregar(ESTRATO ~ YEAR + SEMESTRE,
 
 <br>
 
-```{r F7AspPre, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F7AspPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
 Agregar(ESTRATO ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
                     intervalo = list(c(2008, 1), c(ano, semestre)),
@@ -229,11 +267,15 @@ Agregar(ESTRATO ~ YEAR + SEMESTRE,
 
 ### Tasa de absorción
 
-A continuación, las figuras \@ref(fig:F8AspPre) y \@ref(fig:F9AspPre) presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes admitidos a pregrado en la **Sede Palmira** de la Universidad Nacional de Colombia.
+A continuación, las figuras @F8AspPre y @F9AspPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes admitidos a pregrado en la **Sede Palmira** de la Universidad Nacional de Colombia.
 
-```{r F8AspPre, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
-
-col <- c("#8cc63f", "#f15a24")
+```{r}
+#| label: F8AspPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Agregar(ADMITIDO ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
@@ -241,7 +283,6 @@ Agregar(ADMITIDO ~ YEAR + SEMESTRE,
                     datos = AspirantesPre,
                     textNA = "Sin información") %>% 
         Plot.Series(categoria = "ADMITIDO", 
-              colores = col, 
               titulo = "Evolución del número de aspirantes admitidos a pregrado",
               labelY = "Número de aspirantes", 
               ylim = c(0,NaN),
@@ -251,7 +292,13 @@ Agregar(ADMITIDO ~ YEAR + SEMESTRE,
 
 <br>
 
-```{r F9AspPre, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F9AspPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Agregar(ADMITIDO ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
@@ -261,19 +308,26 @@ Agregar(ADMITIDO ~ YEAR + SEMESTRE,
         Plot.Torta(categoria  = "ADMITIDO",
            ano        = ano,
            periodo    = semestre,
-           colores    = col,
            titulo     = "Distribución de aspirantes admitidos a pregado",
            addPeriodo = TRUE,
            libreria   = "highcharter",
            estilo     = list(hc.Tema = tema))
 ```
+
 <br>
 
 ### Mapa departamentos y municipios de procedencia
 
-A continuación, la figura \@ref(fig:F10AspPre) presenta el mapa actual (última convocatoria) con el total de aspirantes a pregrado por departamentos y municipios de procedencia en la **Sede Palmira**.
+A continuación, la figura @F10AspPre presenta el mapa actual (última convocatoria) con el total de aspirantes a pregrado por departamentos y municipios de procedencia en la **Sede Palmira**.
 
-```{r F10AspPre, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F10AspPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
 AspirantesPre %>% filter(YEAR == ano, SEMESTRE == semestre) %$%
   Plot.Mapa(depto         = COD_DEP_RES,
             mpio          = COD_CIU_RES,
@@ -293,13 +347,19 @@ AspirantesPre %>% filter(YEAR == ano, SEMESTRE == semestre) %$%
 
 ### Tabla agregada 
 
-A continuación, la tabla \@ref(fig:F11AspPre) presenta el agregado **histórico**, por **años, semestres, departamentos  y municipios de procedenecia, sexo, edad, estrato y admisión (sí o no)** de los aspirantes a pregrado en la **Sede Palmira**.
+A continuación, la tabla @F11AspPre presenta el agregado **histórico**, por **años, semestres, departamentos  y municipios de procedenecia, sexo, edad, estrato y admisión (sí o no)** de los aspirantes a pregrado en la **Sede Palmira**.
 
 Los interesados en *imprimir*, *copiar* o *descargar* estas cifras, pueden hacerlo a través de las múltiples opciones que se ofrecen en la parte superior izquierda de la tabla que se presenta a continuación (Copiar, CSV, Excel, PDF e Imprimir). Así mismo, esta tabla, dada su naturaleza web, permiten filtrar los resultados por aquellas variables de interés.
 
 <br>
 
-```{r F11AspPre, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F11AspPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Asp_Pre_Tabla <- AspirantesPre %>% group_by(YEAR, SEMESTRE, DEP_RES, CIU_RES, SEXO, CAT_EDAD, ESTRATO, ADMITIDO) %>% summarise(Total=n()) %>% select(YEAR, SEMESTRE, DEP_RES, CIU_RES, SEXO, CAT_EDAD, ESTRATO, ADMITIDO, Total) %>% ungroup() %>% mutate(across(where(is.character), replace_na,  replace = "SIN INFORMACIÓN")) 
 
@@ -319,9 +379,16 @@ En la parte final de esta sección se presenta una tabla agregada con las combin
 
 ### Evolución Histórica
 
-A continuación, la Figura \@ref(fig:F1AdmPre), presenta la evolución histórica -*desde el periodo 2008*-, del total de admitidos a pregrado en la sede.
+A continuación, la Figura @F1AdmPre, presenta la evolución histórica -*desde el periodo 2008*-, del total de admitidos a pregrado en la sede.
 
-```{r F1AdmPre, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F1AdmPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
 Agregar(TOTAL ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
                     intervalo = list(c(2008, 1), c(ano, semestre)),
@@ -340,11 +407,15 @@ Agregar(TOTAL ~ YEAR + SEMESTRE,
 
 ### Información por sexo
 
-A continuación, las figuras \@ref(fig:F2AdmPre) y \@ref(fig:F3AdmPre) presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a pregrado según el sexo biológico.
+A continuación, las figuras @F2AdmPre y @F3AdmPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a pregrado según el sexo biológico.
 
-```{r F2AdmPre, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
-
-col <- c( "#f15a24", "#8cc63f") # naranja, hombres 
+```{r}
+#| label: F2AdmPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Agregar(SEXO ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
@@ -352,7 +423,6 @@ Agregar(SEXO ~ YEAR + SEMESTRE,
                     datos = AdmitidosPre,
                     textNA = "Sin información") %>% 
            Plot.Series(categoria = "SEXO", 
-              colores = col , 
               titulo = "Evolución del número de admitidos a pregrado por sexo",
               labelY = "Número de admitidos", 
               ylim = c(0,NaN),
@@ -362,7 +432,13 @@ Agregar(SEXO ~ YEAR + SEMESTRE,
 
 <br>
 
-```{r F3AdmPre, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F3AdmPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Agregar(SEXO ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
@@ -372,7 +448,6 @@ Agregar(SEXO ~ YEAR + SEMESTRE,
         Plot.Torta(categoria  = "SEXO",
            ano        = ano,
            periodo    = semestre,
-           colores    = col,
            titulo     = "Distribución de admitidos a pregrado por sexo",
            addPeriodo = TRUE,
            libreria   = "highcharter",
@@ -384,9 +459,16 @@ Agregar(SEXO ~ YEAR + SEMESTRE,
 
 ### Información por edad
 
-A continuación, las figuras \@ref(fig:F4AdmPre) y \@ref(fig:F5AdmPre) presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a pregrado por grupos de edad.
+A continuación, las figuras @F4AdmPre y @F5AdmPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a pregrado por grupos de edad.
 
-```{r F4AdmPre, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F4AdmPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
 Agregar(CAT_EDAD ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
                     intervalo = list(c(2008, 1), c(ano, semestre)),
@@ -402,7 +484,13 @@ Agregar(CAT_EDAD ~ YEAR + SEMESTRE,
 
 <br>
 
-```{r F5AdmPre, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F5AdmPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Agregar(CAT_EDAD ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
@@ -426,9 +514,15 @@ Agregar(CAT_EDAD ~ YEAR + SEMESTRE,
 
 ### Información por estrato socioeconómico
 
-A continuación, las figuras \@ref(fig:F6AdmPre) y \@ref(fig:F7AdmPre) presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a pregrado según el estrato socioeconómico de las viviendas en donde estos residen.
+A continuación, las figuras @F6AdmPre y @F7AdmPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a pregrado según el estrato socioeconómico de las viviendas en donde estos residen.
 
-```{r F6AdmPre, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F6AdmPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Agregar(ESTRATO ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
@@ -445,7 +539,14 @@ Agregar(ESTRATO ~ YEAR + SEMESTRE,
 
 <br>
 
-```{r F7AdmPre, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F7AdmPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
 Agregar(ESTRATO ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
                     intervalo = list(c(2008, 1), c(ano, semestre)),
@@ -464,11 +565,15 @@ Agregar(ESTRATO ~ YEAR + SEMESTRE,
 
 ### Información por tipo de admisión
 
-A continuación, las figuras \@ref(fig:F8AdmPre) y \@ref(fig:F9AdmPre) presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a pregrado según el tipo de admisión.
+A continuación, las figuras @F8AdmPre y @F9AdmPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a pregrado según el tipo de admisión.
 
-```{r F8AdmPre, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
-
-col = c("#8cc63f", "#f15a24")
+```{r}
+#| label: F8AdmPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Agregar(MOD_INS ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
@@ -476,7 +581,6 @@ Agregar(MOD_INS ~ YEAR + SEMESTRE,
                     datos = AdmitidosPre,
                     textNA = "Sin información") %>% 
            Plot.Series(categoria = "MOD_INS", 
-              colores = col, 
               titulo = "Evolúción del número de admitidos a pregrado por tipo de admisión",
               labelY = "Número de admitidos", 
               ylim = c(0,NaN),
@@ -486,7 +590,14 @@ Agregar(MOD_INS ~ YEAR + SEMESTRE,
 
 <br>
 
-```{r F9AdmPre, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F9AdmPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
 Agregar(MOD_INS ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
                     intervalo = list(c(2008, 1), c(ano, semestre)),
@@ -495,7 +606,6 @@ Agregar(MOD_INS ~ YEAR + SEMESTRE,
         Plot.Torta(categoria  = "MOD_INS",
            ano        = ano,
            periodo    = semestre,
-           colores    = col,
            titulo     = "Distribución de admitidos a pregrado por tipo de admisión",
            addPeriodo = TRUE,
            libreria   = "highcharter",
@@ -506,11 +616,15 @@ Agregar(MOD_INS ~ YEAR + SEMESTRE,
 
 ### Información por facultad
 
-A continuación, las figuras \@ref(fig:F10AdmPre) y \@ref(fig:F11AdmPre) presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a pregrado por facultad.
+A continuación, las figuras @F10AdmPre y @F11AdmPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a pregrado por facultad.
 
-```{r F10AdmPre, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
-
-col = c("#8cc63f", "#f15a24")
+```{r}
+#| label: F10AdmPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Agregar(FACULTAD ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
@@ -518,7 +632,6 @@ Agregar(FACULTAD ~ YEAR + SEMESTRE,
                     datos = AdmitidosPre,
                     textNA = "Sin información") %>% 
            Plot.Series(categoria = "FACULTAD", 
-              colores = col, 
               titulo = "Evolúción del número de admitidos a pregrado por facultad",
               labelY = "Número de admitidos", 
               ylim = c(0,NaN),
@@ -528,7 +641,14 @@ Agregar(FACULTAD ~ YEAR + SEMESTRE,
 
 <br>
 
-```{r F11AdmPre, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F11AdmPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
 Agregar(FACULTAD ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
                     intervalo = list(c(2008, 1), c(ano, semestre)),
@@ -537,7 +657,6 @@ Agregar(FACULTAD ~ YEAR + SEMESTRE,
         Plot.Torta(categoria  = "FACULTAD",
            ano        = ano,
            periodo    = semestre,
-           colores    = col,
            titulo     = "Distribución de admitidos a pregrado por facultad",
            addPeriodo = TRUE,
            libreria   = "highcharter",
@@ -548,9 +667,16 @@ Agregar(FACULTAD ~ YEAR + SEMESTRE,
 
 ### Información por programa
 
-A continuación, las figuras \@ref(fig:F12AdmPre) y \@ref(fig:F13AdmPre) presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a pregrado por programa.
+A continuación, las figuras @F12AdmPre y @F13AdmPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a pregrado por programa.
 
-```{r F12AdmPre, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F12AdmPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
 Agregar(PROGRAMA ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
                     intervalo = list(c(2008, 1), c(ano, semestre)),
@@ -566,7 +692,14 @@ Agregar(PROGRAMA ~ YEAR + SEMESTRE,
 
 <br>
 
-```{r F13AdmPre, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F13AdmPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
 Agregar(PROGRAMA ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
                     intervalo = list(c(2008, 1), c(ano, semestre)),
@@ -588,9 +721,16 @@ Agregar(PROGRAMA ~ YEAR + SEMESTRE,
 
 ### Información de los puntajes obtenidos
 
-A continuación, la figuras \@ref(fig:F14AdmPre) y \@ref(fig:F15AdmPre) presentan, respectivamente, la evolución histórica y el comportamiento del último año del puntaje total en el examen de admisión de admitidos a pregrado.
+A continuación, la figuras @F14AdmPre y @F15AdmPre presentan, respectivamente, la evolución histórica y el comportamiento del último año del puntaje total en el examen de admisión de admitidos a pregrado.
 
-```{r F14AdmPre, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F14AdmPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
 Plot.Boxplot(
   datos    = subset(AdmitidosPre,YEAR >= 2010),
   variable = PTOTAL,
@@ -598,7 +738,6 @@ Plot.Boxplot(
   grupo2   = SEMESTRE,
   outliers = FALSE,
   ylim     = c(100, 900),
-  colores  = col,
   titulo   = "Evolución del puntaje total de los admitidos",
   labelY   = "Puntaje",
   libreria = "highcharter",
@@ -608,7 +747,14 @@ Plot.Boxplot(
 
 <br> 
 
-```{r F15AdmPre, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F15AdmPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
 Plot.Boxplot(
   datos    = subset(AdmitidosPre,YEAR == ano),
   variable = PTOTAL,
@@ -628,9 +774,16 @@ Plot.Boxplot(
 
 ### Mapa de departamentos y municipios de procedencia
 
-A continuación, la figura \@ref(fig:F16AdmPre) presenta el mapa actual (última convocatoria) con el total de admitidos a pregrado por departamentos y municipios de procedencia en la **Sede Palmira**.
+A continuación, la figura @F16AdmPre presenta el mapa actual (última convocatoria) con el total de admitidos a pregrado por departamentos y municipios de procedencia en la **Sede Palmira**.
 
-```{r F16AdmPre, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F16AdmPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
 AdmitidosPre %>% filter(YEAR == ano, SEMESTRE == semestre) %$%
   Plot.Mapa(depto         = COD_DEP_RES,
             mpio          = COD_CIU_RES,
@@ -651,13 +804,19 @@ AdmitidosPre %>% filter(YEAR == ano, SEMESTRE == semestre) %$%
 
 ### Tabla agregada
 
-A continuación, la tabla \@ref(fig:F17AdmPre) presenta el agregado **histórico**, por **años, semestres, departamentos  y municipios de procedenecia, sexo, edad, estrato, tipo de admisión, facultad, programa, y puntaje** de los admitidos a pregrado en la **Sede Palmira**.
+A continuación, la tabla @F17AdmPre presenta el agregado **histórico**, por **años, semestres, departamentos  y municipios de procedenecia, sexo, edad, estrato, tipo de admisión, facultad, programa, y puntaje** de los admitidos a pregrado en la **Sede Palmira**.
 
 Los interesados en *imprimir*, *copiar* o *descargar* estas cifras, pueden hacerlo a través de las múltiples opciones que se ofrecen en la parte superior izquierda de la tabla que se presenta a continuación (Copiar, CSV, Excel, PDF e Imprimir). Así mismo, esta tabla, dada su naturaleza web, permiten filtrar los resultados por aquellas variables de interés.
 
 <br>
 
-```{r F17AdmPre, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F17AdmPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Adm_Pre_Tabla <- AdmitidosPre %>% group_by(YEAR, SEMESTRE, DEP_RES, CIU_RES, SEXO, CAT_EDAD, ESTRATO, MOD_INS, FACULTAD, PROGRAMA, PTOTAL) %>% summarise(Total=n()) %>% select(YEAR, SEMESTRE, DEP_RES, CIU_RES, SEXO, CAT_EDAD, ESTRATO, MOD_INS, FACULTAD, PROGRAMA, PTOTAL, Total) %>% ungroup() %>% mutate(across(where(is.character), replace_na,  replace = "SIN INFORMACIÓN")) 
 
@@ -685,9 +844,15 @@ El número de aspirantes a postgrado en la **Sede Palmira** de la Universidad Na
 
 ### Evolución histórica
 
-A continuación, la Figura \@ref(fig:F1AspPos), presenta la evolución histórica -*desde el periodo 20081*-, del total de aspirantes a postgrado en la sede.
+A continuación, la Figura @F1AspPos, presenta la evolución histórica -*desde el periodo 20081*-, del total de aspirantes a postgrado en la sede.
 
-```{r F1AspPos, echo=FALSE, message=FALSE, warning=FALSE, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F1AspPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Agregar(TOTAL ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
@@ -707,11 +872,15 @@ Agregar(TOTAL ~ YEAR + SEMESTRE,
 
 ### Información por sexo
 
-A continuación, las figuras \@ref(fig:F2AspPos) y \@ref(fig:F3AspPos) presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes a posgrado según el sexo biológico.
+A continuación, las figuras @F2AspPos y @F3AspPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes a posgrado según el sexo biológico.
 
-```{r F2AspPos, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
-
-col <- c( "#f15a24", "#8cc63f") # naranja, hombres 
+```{r}
+#| label: F2AspPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Agregar(SEXO ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
@@ -719,7 +888,6 @@ Agregar(SEXO ~ YEAR + SEMESTRE,
                     datos = AspirantesPos,
                     textNA = "Sin información") %>% 
            Plot.Series(categoria = "SEXO", 
-              colores = col , 
               titulo = "Evolución del número de aspirantes a posgrado por sexo",
               labelY = "Número de aspirantes", 
               ylim = c(0,NaN),
@@ -729,7 +897,13 @@ Agregar(SEXO ~ YEAR + SEMESTRE,
 
 <br>
 
-```{r F3AspPos, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F3AspPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Agregar(SEXO ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
@@ -739,7 +913,6 @@ Agregar(SEXO ~ YEAR + SEMESTRE,
         Plot.Torta(categoria  = "SEXO",
            ano        = ano,
            periodo    = semestre,
-           colores    = col,
            titulo     = "Distribución de aspirantes a posgrado por sexo",
            addPeriodo = TRUE,
            libreria   = "highcharter",
@@ -751,9 +924,15 @@ Agregar(SEXO ~ YEAR + SEMESTRE,
 
 ### Información por edad
 
-A continuación, las figuras \@ref(fig:F4AspPos) y \@ref(fig:F5AspPos) presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes a posgrado por grupos de edad.
+A continuación, las figuras @F4AspPos y @F5AspPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes a posgrado por grupos de edad.
 
-```{r F4AspPos, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F4AspPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Agregar(CAT_EDAD ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
@@ -770,7 +949,13 @@ Agregar(CAT_EDAD ~ YEAR + SEMESTRE,
 
 <br>
 
-```{r F5AspPos, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F5AspPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Agregar(CAT_EDAD ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
@@ -794,9 +979,16 @@ Agregar(CAT_EDAD ~ YEAR + SEMESTRE,
 
 ### Información por estrato socioeconómico
 
-A continuación, las figuras \@ref(fig:F6AspPos) y \@ref(fig:F7AspPos) presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes a posgrado según el estrato socioeconómico de las viviendas en donde estos residen.
+A continuación, las figuras @F6AspPos) y @F7AspPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes a posgrado según el estrato socioeconómico de las viviendas en donde estos residen.
 
-```{r F6AspPos, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F6AspPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
 Agregar(ESTRATO ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
                     intervalo = list(c(2008, 1), c(ano, semestre)),
@@ -812,7 +1004,14 @@ Agregar(ESTRATO ~ YEAR + SEMESTRE,
 
 <br>
 
-```{r F7AspPos, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F7AspPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
 Agregar(ESTRATO ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
                     intervalo = list(c(2008, 1), c(ano, semestre)),
@@ -831,11 +1030,15 @@ Agregar(ESTRATO ~ YEAR + SEMESTRE,
 
 ### Tasa de absorción
 
-A continuación, las figuras \@ref(fig:F8AspPos) y \@ref(fig:F9AspPos) presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes admitidos a posgrado en la **Sede Palmira** de la Universidad Nacional de Colombia.
+A continuación, las figuras @F8AspPos y @F9AspPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes admitidos a posgrado en la **Sede Palmira** de la Universidad Nacional de Colombia.
 
-```{r F8AspPos, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
-
-col <-   c("#8cc63f", "#f15a24")
+```{r}
+#| label: F8AspPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Agregar(ADMITIDO ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
@@ -843,7 +1046,6 @@ Agregar(ADMITIDO ~ YEAR + SEMESTRE,
                     datos = AspirantesPos,
                     textNA = "Sin información") %>% 
         Plot.Series(categoria = "ADMITIDO", 
-              colores = col, 
               titulo = "Evolución del número de aspirantes admitidos a posgrado",
               labelY = "Número de aspirantes",
               ylim = c(0,NaN),
@@ -853,7 +1055,13 @@ Agregar(ADMITIDO ~ YEAR + SEMESTRE,
 
 <br>
 
-```{r F9AspPos, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F9AspPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Agregar(ADMITIDO ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
@@ -863,7 +1071,6 @@ Agregar(ADMITIDO ~ YEAR + SEMESTRE,
         Plot.Torta(categoria  = "ADMITIDO",
            ano        = ano,
            periodo    = semestre,
-           colores    = col,
            titulo     = "Distribución de aspirantes admitidos a posgrado",
            addPeriodo = TRUE,
            libreria   = "highcharter",
@@ -874,9 +1081,16 @@ Agregar(ADMITIDO ~ YEAR + SEMESTRE,
 
 ### Mapa departamentos y municipios de procedencia
 
-A continuación, la figura \@ref(fig:F10AspPos) presenta el mapa actual (última convocatoria) con el total de aspirantes a posgrado por departamentos y municipios de procedencia en la **Sede Palmira**.
+A continuación, la figura @F10AspPos presenta el mapa actual (última convocatoria) con el total de aspirantes a posgrado por departamentos y municipios de procedencia en la **Sede Palmira**.
 
-```{r F10AspPos, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F10AspPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
 AspirantesPos %>% filter(YEAR == ano, SEMESTRE == semestre) %$%
   Plot.Mapa(depto         = COD_DEP_RES,
             mpio          = COD_CIU_RES,
@@ -897,13 +1111,19 @@ AspirantesPos %>% filter(YEAR == ano, SEMESTRE == semestre) %$%
 
 ### Tabla agregada 
 
-A continuación, la tabla \@ref(fig:F11AspPos) presenta el agregado **histórico**, por **años, semestres, departamentos  y municipios de procedenecia, sexo, edad, estrato y admisión (sí o no)** de los aspirantes a posgrado en la **Sede Palmira**.
+A continuación, la tabla @F11AspPos presenta el agregado **histórico**, por **años, semestres, departamentos  y municipios de procedenecia, sexo, edad, estrato y admisión (sí o no)** de los aspirantes a posgrado en la **Sede Palmira**.
 
 Los interesados en *imprimir*, *copiar* o *descargar* estas cifras, pueden hacerlo a través de las múltiples opciones que se ofrecen en la parte superior izquierda de la tabla que se presenta a continuación (Copiar, CSV, Excel, PDF e Imprimir). Así mismo, esta tabla, dada su naturaleza web, permiten filtrar los resultados por aquellas variables de interés.
 
 <br>
 
-```{r F11AspPos, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F11AspPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Asp_Pos_Tabla <- AspirantesPos %>% group_by(YEAR, SEMESTRE, DEP_RES, CIU_RES, SEXO, CAT_EDAD, ESTRATO, ADMITIDO) %>% summarise(Total=n()) %>% select(YEAR, SEMESTRE, DEP_RES, CIU_RES, SEXO, CAT_EDAD, ESTRATO, ADMITIDO, Total) %>% ungroup() %>% mutate(across(where(is.character), replace_na,  replace = "SIN INFORMACIÓN")) 
 
@@ -931,9 +1151,15 @@ El número de admitidos a postgrado en la **Sede Palmira** de la Universidad Nac
 
 ### Evolución histórica
 
-A continuación, la Figura \@ref(fig:F1AdmPos), presenta la evolución histórica -*desde el periodo 2008-1*-, del total de admitidos a postgrado en la sede.
+A continuación, la Figura @F1AdmPos, presenta la evolución histórica -*desde el periodo 2008-1*-, del total de admitidos a postgrado en la sede.
 
-```{r F1AdmPos, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F1AdmPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Agregar(TOTAL ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
@@ -953,11 +1179,15 @@ Agregar(TOTAL ~ YEAR + SEMESTRE,
 
 ### Información por sexo
 
-A continuación, las figuras \@ref(fig:F2AdmPos) y \@ref(fig:F3AdmPos) presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a posgrado según el sexo biológico.
+A continuación, las figuras @F2AdmPos y @F3AdmPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a posgrado según el sexo biológico.
 
-```{r F2AdmPos, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
-
-col <- c( "#f15a24", "#8cc63f") # naranja, hombres 
+```{r}
+#| label: F2AdmPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Agregar(SEXO ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
@@ -965,7 +1195,6 @@ Agregar(SEXO ~ YEAR + SEMESTRE,
                     datos = AdmitidosPos,
                     textNA = "Sin información") %>% 
            Plot.Series(categoria = "SEXO", 
-              colores = col , 
               titulo = "Evolución del número de admitidos a posgrado por sexo",
               labelY = "Número de admitidos", 
               libreria = c("highcharter"), 
@@ -974,7 +1203,13 @@ Agregar(SEXO ~ YEAR + SEMESTRE,
 
 <br>
 
-```{r F3AdmPos, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F3AdmPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Agregar(SEXO ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
@@ -984,7 +1219,6 @@ Agregar(SEXO ~ YEAR + SEMESTRE,
         Plot.Torta(categoria  = "SEXO",
            ano        = ano,
            periodo    = semestre,
-           colores    = col,
            titulo     = "Distribución de admitidos a posgrado por sexo",
            addPeriodo = TRUE,
            libreria   = "highcharter",
@@ -996,9 +1230,15 @@ Agregar(SEXO ~ YEAR + SEMESTRE,
 
 ### Información por edad
 
-A continuación, las figuras \@ref(fig:F4AdmPos) y \@ref(fig:F5AdmPos) presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a posgrado por grupos de edad.
+A continuación, las figuras @F4AdmPos y @F5AdmPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a posgrado por grupos de edad.
 
-```{r F4AdmPos, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F4AdmPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Agregar(CAT_EDAD ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
@@ -1015,7 +1255,13 @@ Agregar(CAT_EDAD ~ YEAR + SEMESTRE,
 
 <br>
 
-```{r F5AdmPos, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F5AdmPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Agregar(CAT_EDAD ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
@@ -1034,15 +1280,20 @@ Agregar(CAT_EDAD ~ YEAR + SEMESTRE,
             estilo = list(hc.Tema = tema, hc.Slider = FALSE)
              )
 ```
+
 <br>
 
 ### Información por estrato socioeconómico
 
-A continuación, las figuras \@ref(fig:F6AdmPos) y \@ref(fig:F7AdmPos) presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a posgrado según el estrato socioeconómico de las viviendas en donde estos residen.
+A continuación, las figuras @F6AdmPos y @F7AdmPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a posgrado según el estrato socioeconómico de las viviendas en donde estos residen.
 
-```{r F6AdmPos, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
-
-col = c("#8cc63f", "#f15a24", "#0071bc", "#6d6666")
+```{r}
+#| label: F6AdmPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Agregar(ESTRATO ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
@@ -1050,7 +1301,6 @@ Agregar(ESTRATO ~ YEAR + SEMESTRE,
                     datos = AdmitidosPos,
                     textNA = "Sin información") %>% 
            Plot.Series(categoria = "ESTRATO", 
-              colores = col, 
               titulo = "Evolúción del número de admitidos a posgrado por estrato socioeconómico",
               labelY = "Número de admitidos", 
               ylim = c(0,NaN),
@@ -1060,7 +1310,13 @@ Agregar(ESTRATO ~ YEAR + SEMESTRE,
 
 <br>
 
-```{r F7AdmPos, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F7AdmPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Agregar(ESTRATO ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
@@ -1070,7 +1326,6 @@ Agregar(ESTRATO ~ YEAR + SEMESTRE,
         Plot.Torta(categoria  = "ESTRATO",
            ano        = ano,
            periodo    = semestre,
-           colores    = col,
            titulo     = "Distribución de admitidos a posgrado por estrato socioeconómico",
            addPeriodo = TRUE,
            libreria   = "highcharter",
@@ -1081,9 +1336,15 @@ Agregar(ESTRATO ~ YEAR + SEMESTRE,
 
 ### Información por facultad
 
-A continuación, las figuras \@ref(fig:F8AdmPos) y \@ref(fig:F9AdmPos) presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a posgrado por facultad.
+A continuación, las figuras @F8AdmPos y @F9AdmPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a posgrado por facultad.
 
-```{r F8AdmPos, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F8AdmPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Agregar(FACULTAD ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
@@ -1100,7 +1361,13 @@ Agregar(FACULTAD ~ YEAR + SEMESTRE,
 
 <br>
 
-```{r F9AdmPos, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F9AdmPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Agregar(FACULTAD ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
@@ -1120,9 +1387,16 @@ Agregar(FACULTAD ~ YEAR + SEMESTRE,
 
 ### Información por programa
 
-A continuación, las figuras \@ref(fig:F10AdmPos) y \@ref(fig:F11AdmPos) presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a posgrado por programa.
+A continuación, las figuras @:F10AdmPos y @F11AdmPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a posgrado por programa.
 
-```{r F10AdmPos, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F10AdmPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
 Agregar(PROGRAMA ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
                     intervalo = list(c(2008, 1), c(ano, semestre)),
@@ -1138,7 +1412,14 @@ Agregar(PROGRAMA ~ YEAR + SEMESTRE,
 
 <br>
 
-```{r F11AdmPos, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F11AdmPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
 Agregar(PROGRAMA ~ YEAR + SEMESTRE, 
                     frecuencia = list(c(2008:ano), c(1:2)),
                     intervalo = list(c(2008, 1), c(ano, semestre)),
@@ -1160,9 +1441,16 @@ Agregar(PROGRAMA ~ YEAR + SEMESTRE,
 
 ### Mapa de departamentos y municipios de procedencia
 
-A continuación, la figura \@ref(fig:F14AdmPos) presenta el mapa actual (última convocatoria) con el total de admitidos a pregrado por departamentos y municipios de procedencia en la **Sede Palmira**.
+A continuación, la figura @F14AdmPos presenta el mapa actual (última convocatoria) con el total de admitidos a pregrado por departamentos y municipios de procedencia en la **Sede Palmira**.
 
-```{r F14AdmPos, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F14AdmPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
 AdmitidosPos %>% filter(YEAR == ano, SEMESTRE == semestre) %$%
   Plot.Mapa(depto         = COD_DEP_RES,
             mpio          = COD_CIU_RES,
@@ -1183,13 +1471,19 @@ AdmitidosPos %>% filter(YEAR == ano, SEMESTRE == semestre) %$%
 
 ### Tabla agregada
 
-A continuación, la tabla \@ref(fig:F15AdmPos) presenta el agregado **histórico**, por **años, semestres, departamentos  y municipios de procedenecia, sexo, edad, estrato, tipo de admisión, facultad, programa, y puntaje** de los admitidos a postgrado en la **Sede Palmira**.
+A continuación, la tabla @F15AdmPos presenta el agregado **histórico**, por **años, semestres, departamentos  y municipios de procedenecia, sexo, edad, estrato, tipo de admisión, facultad, programa, y puntaje** de los admitidos a postgrado en la **Sede Palmira**.
 
 Los interesados en *imprimir*, *copiar* o *descargar* estas cifras, pueden hacerlo a través de las múltiples opciones que se ofrecen en la parte superior izquierda de la tabla que se presenta a continuación (Copiar, CSV, Excel, PDF e Imprimir). Así mismo, esta tabla, dada su naturaleza web, permiten filtrar los resultados por aquellas variables de interés.
 
 <br>
 
-```{r F15AdmPos, echo=FALSE, message=FALSE, warning=FALSE, fig.cap='Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'}
+```{r}
+#| label: F15AdmPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Adm_Pos_Tabla <- AdmitidosPos %>% group_by(YEAR, SEMESTRE, DEP_RES, CIU_RES, SEXO, CAT_EDAD, ESTRATO, MOD_INS, FACULTAD, PROGRAMA) %>% summarise(Total=n()) %>% select(YEAR, SEMESTRE, DEP_RES, CIU_RES, SEXO, CAT_EDAD, ESTRATO, MOD_INS, FACULTAD, PROGRAMA, Total) %>% ungroup() %>% mutate(across(where(is.character), replace_na,  replace = "SIN INFORMACIÓN")) 
 

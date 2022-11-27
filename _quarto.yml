@@ -3,8 +3,8 @@ project:
   output-dir: docs
 
 book:
-  title: "BoletinSedePalmira"
-  author: "Jane Doe"
+  title: "Boletin Sede Palmira"
+  author: "Jimena Lopez"
   date: "25/11/2022"
   chapters:
     - index.qmd
