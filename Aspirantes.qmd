@@ -135,7 +135,7 @@ Agregar(SEXO ~ YEAR + SEMESTRE,
 <br>
 
 ```{r}
-#| label: F3AspPre
+#| label: fig-F3AspPre
 #| echo: false
 #| message: false
 #| warning: false
@@ -161,10 +161,10 @@ Agregar(SEXO ~ YEAR + SEMESTRE,
 
 ### Información por edad
 
-A continuación, las figuras @F4AspPre y @F5AspPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes a pregrado por grupos de edad.
+A continuación, las figuras @fig-F4AspPre y @fig-F5AspPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes a pregrado por grupos de edad.
 
 ```{r}
-#| label: F4AspPre
+#| label: fig-F4AspPre
 #| echo: false
 #| message: false
 #| warning: false
@@ -187,7 +187,7 @@ Agregar(CAT_EDAD ~ YEAR + SEMESTRE,
 <br>
 
 ```{r}
-#| label: F5AspPre
+#| label: fig-F5AspPre
 #| echo: false
 #| message: false
 #| warning: false
@@ -216,10 +216,10 @@ Agregar(CAT_EDAD ~ YEAR + SEMESTRE,
 
 ### Información por estrato socioeconómico
 
-A continuación, las figuras @F6AspPre y @F7AspPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes a pregrado según el estrato socioeconómico de las viviendas en donde estos residen.
+A continuación, las figuras @fig-F6AspPre y @fig-F7AspPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes a pregrado según el estrato socioeconómico de las viviendas en donde estos residen.
 
 ```{r}
-#| label: F6AspPre
+#| label: fig-F6AspPre
 #| echo: false
 #| message: false
 #| warning: false
@@ -242,7 +242,7 @@ Agregar(ESTRATO ~ YEAR + SEMESTRE,
 <br>
 
 ```{r}
-#| label: F7AspPre
+#| label: fig-F7AspPre
 #| echo: false
 #| message: false
 #| warning: false
@@ -267,10 +267,10 @@ Agregar(ESTRATO ~ YEAR + SEMESTRE,
 
 ### Tasa de absorción
 
-A continuación, las figuras @F8AspPre y @F9AspPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes admitidos a pregrado en la **Sede Palmira** de la Universidad Nacional de Colombia.
+A continuación, las figuras @fig-F8AspPre y @fig-F9AspPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes admitidos a pregrado en la **Sede Palmira** de la Universidad Nacional de Colombia.
 
 ```{r}
-#| label: F8AspPre
+#| label: fig-F8AspPre
 #| echo: false
 #| message: false
 #| warning: false
@@ -293,7 +293,7 @@ Agregar(ADMITIDO ~ YEAR + SEMESTRE,
 <br>
 
 ```{r}
-#| label: F9AspPre
+#| label: fig-F9AspPre
 #| echo: false
 #| message: false
 #| warning: false
@@ -318,10 +318,10 @@ Agregar(ADMITIDO ~ YEAR + SEMESTRE,
 
 ### Mapa departamentos y municipios de procedencia
 
-A continuación, la figura @F10AspPre presenta el mapa actual (última convocatoria) con el total de aspirantes a pregrado por departamentos y municipios de procedencia en la **Sede Palmira**.
+A continuación, la figura @fig-F10AspPre presenta el mapa actual (última convocatoria) con el total de aspirantes a pregrado por departamentos y municipios de procedencia en la **Sede Palmira**.
 
 ```{r}
-#| label: F10AspPre
+#| label: fig-F10AspPre
 #| echo: false
 #| message: false
 #| warning: false
@@ -343,22 +343,23 @@ AspirantesPre %>% filter(YEAR == ano, SEMESTRE == semestre) %$%
             showSedes     = TRUE
   )
 ```
+
 <br>
 
 ### Tabla agregada 
 
-A continuación, la tabla @F11AspPre presenta el agregado **histórico**, por **años, semestres, departamentos  y municipios de procedenecia, sexo, edad, estrato y admisión (sí o no)** de los aspirantes a pregrado en la **Sede Palmira**.
+A continuación, la tabla @tbl-F11AspPre presenta el agregado **histórico**, por **años, semestres, departamentos  y municipios de procedenecia, sexo, edad, estrato y admisión (sí o no)** de los aspirantes a pregrado en la **Sede Palmira**.
 
 Los interesados en *imprimir*, *copiar* o *descargar* estas cifras, pueden hacerlo a través de las múltiples opciones que se ofrecen en la parte superior izquierda de la tabla que se presenta a continuación (Copiar, CSV, Excel, PDF e Imprimir). Así mismo, esta tabla, dada su naturaleza web, permiten filtrar los resultados por aquellas variables de interés.
 
 <br>
 
 ```{r}
-#| label: F11AspPre
+#| label: tbl-F11AspPre
 #| echo: false
 #| message: false
 #| warning: false
-#| fig-cap: >
+#| tbl-cap: >
 #|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Asp_Pre_Tabla <- AspirantesPre %>% group_by(YEAR, SEMESTRE, DEP_RES, CIU_RES, SEXO, CAT_EDAD, ESTRATO, ADMITIDO) %>% summarise(Total=n()) %>% select(YEAR, SEMESTRE, DEP_RES, CIU_RES, SEXO, CAT_EDAD, ESTRATO, ADMITIDO, Total) %>% ungroup() %>% mutate(across(where(is.character), replace_na,  replace = "SIN INFORMACIÓN")) 
@@ -379,10 +380,10 @@ En la parte final de esta sección se presenta una tabla agregada con las combin
 
 ### Evolución Histórica
 
-A continuación, la Figura @F1AdmPre, presenta la evolución histórica -*desde el periodo 2008*-, del total de admitidos a pregrado en la sede.
+A continuación, la Figura @fig-F1AdmPre, presenta la evolución histórica -*desde el periodo 2008*-, del total de admitidos a pregrado en la sede.
 
 ```{r}
-#| label: F1AdmPre
+#| label: fig-F1AdmPre
 #| echo: false
 #| message: false
 #| warning: false
@@ -407,10 +408,10 @@ Agregar(TOTAL ~ YEAR + SEMESTRE,
 
 ### Información por sexo
 
-A continuación, las figuras @F2AdmPre y @F3AdmPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a pregrado según el sexo biológico.
+A continuación, las figuras @fig-F2AdmPre y @fig-F3AdmPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a pregrado según el sexo biológico.
 
 ```{r}
-#| label: F2AdmPre
+#| label: fig-F2AdmPre
 #| echo: false
 #| message: false
 #| warning: false
@@ -433,7 +434,7 @@ Agregar(SEXO ~ YEAR + SEMESTRE,
 <br>
 
 ```{r}
-#| label: F3AdmPre
+#| label: fig-F3AdmPre
 #| echo: false
 #| message: false
 #| warning: false
@@ -459,10 +460,10 @@ Agregar(SEXO ~ YEAR + SEMESTRE,
 
 ### Información por edad
 
-A continuación, las figuras @F4AdmPre y @F5AdmPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a pregrado por grupos de edad.
+A continuación, las figuras @fig-F4AdmPre y @fig-F5AdmPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a pregrado por grupos de edad.
 
 ```{r}
-#| label: F4AdmPre
+#| label: fig-F4AdmPre
 #| echo: false
 #| message: false
 #| warning: false
@@ -485,7 +486,7 @@ Agregar(CAT_EDAD ~ YEAR + SEMESTRE,
 <br>
 
 ```{r}
-#| label: F5AdmPre
+#| label: fig-F5AdmPre
 #| echo: false
 #| message: false
 #| warning: false
@@ -514,10 +515,10 @@ Agregar(CAT_EDAD ~ YEAR + SEMESTRE,
 
 ### Información por estrato socioeconómico
 
-A continuación, las figuras @F6AdmPre y @F7AdmPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a pregrado según el estrato socioeconómico de las viviendas en donde estos residen.
+A continuación, las figuras @fig-F6AdmPre y @fig-F7AdmPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a pregrado según el estrato socioeconómico de las viviendas en donde estos residen.
 
 ```{r}
-#| label: F6AdmPre
+#| label: fig-F6AdmPre
 #| echo: false
 #| message: false
 #| warning: false
@@ -540,7 +541,7 @@ Agregar(ESTRATO ~ YEAR + SEMESTRE,
 <br>
 
 ```{r}
-#| label: F7AdmPre
+#| label: fig-F7AdmPre
 #| echo: false
 #| message: false
 #| warning: false
@@ -565,10 +566,10 @@ Agregar(ESTRATO ~ YEAR + SEMESTRE,
 
 ### Información por tipo de admisión
 
-A continuación, las figuras @F8AdmPre y @F9AdmPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a pregrado según el tipo de admisión.
+A continuación, las figuras @fig-F8AdmPre y @fig-F9AdmPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a pregrado según el tipo de admisión.
 
 ```{r}
-#| label: F8AdmPre
+#| label: fig-F8AdmPre
 #| echo: false
 #| message: false
 #| warning: false
@@ -591,7 +592,7 @@ Agregar(MOD_INS ~ YEAR + SEMESTRE,
 <br>
 
 ```{r}
-#| label: F9AdmPre
+#| label: fig-F9AdmPre
 #| echo: false
 #| message: false
 #| warning: false
@@ -616,10 +617,10 @@ Agregar(MOD_INS ~ YEAR + SEMESTRE,
 
 ### Información por facultad
 
-A continuación, las figuras @F10AdmPre y @F11AdmPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a pregrado por facultad.
+A continuación, las figuras @fig-F10AdmPre y @fig-F11AdmPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a pregrado por facultad.
 
 ```{r}
-#| label: F10AdmPre
+#| label: fig-F10AdmPre
 #| echo: false
 #| message: false
 #| warning: false
@@ -642,7 +643,7 @@ Agregar(FACULTAD ~ YEAR + SEMESTRE,
 <br>
 
 ```{r}
-#| label: F11AdmPre
+#| label: fig-F11AdmPre
 #| echo: false
 #| message: false
 #| warning: false
@@ -667,10 +668,10 @@ Agregar(FACULTAD ~ YEAR + SEMESTRE,
 
 ### Información por programa
 
-A continuación, las figuras @F12AdmPre y @F13AdmPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a pregrado por programa.
+A continuación, las figuras @fig-F12AdmPre y @fig-F13AdmPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a pregrado por programa.
 
 ```{r}
-#| label: F12AdmPre
+#| label: fig-F12AdmPre
 #| echo: false
 #| message: false
 #| warning: false
@@ -693,7 +694,7 @@ Agregar(PROGRAMA ~ YEAR + SEMESTRE,
 <br>
 
 ```{r}
-#| label: F13AdmPre
+#| label: fig-F13AdmPre
 #| echo: false
 #| message: false
 #| warning: false
@@ -721,10 +722,10 @@ Agregar(PROGRAMA ~ YEAR + SEMESTRE,
 
 ### Información de los puntajes obtenidos
 
-A continuación, la figuras @F14AdmPre y @F15AdmPre presentan, respectivamente, la evolución histórica y el comportamiento del último año del puntaje total en el examen de admisión de admitidos a pregrado.
+A continuación, la figuras @fig-F14AdmPre y @fig-F15AdmPre presentan, respectivamente, la evolución histórica y el comportamiento del último año del puntaje total en el examen de admisión de admitidos a pregrado.
 
 ```{r}
-#| label: F14AdmPre
+#| label: fig-F14AdmPre
 #| echo: false
 #| message: false
 #| warning: false
@@ -748,7 +749,7 @@ Plot.Boxplot(
 <br> 
 
 ```{r}
-#| label: F15AdmPre
+#| label: fig-F15AdmPre
 #| echo: false
 #| message: false
 #| warning: false
@@ -774,10 +775,10 @@ Plot.Boxplot(
 
 ### Mapa de departamentos y municipios de procedencia
 
-A continuación, la figura @F16AdmPre presenta el mapa actual (última convocatoria) con el total de admitidos a pregrado por departamentos y municipios de procedencia en la **Sede Palmira**.
+A continuación, la figura @fig-F16AdmPre presenta el mapa actual (última convocatoria) con el total de admitidos a pregrado por departamentos y municipios de procedencia en la **Sede Palmira**.
 
 ```{r}
-#| label: F16AdmPre
+#| label: fig-F16AdmPre
 #| echo: false
 #| message: false
 #| warning: false
@@ -804,14 +805,14 @@ AdmitidosPre %>% filter(YEAR == ano, SEMESTRE == semestre) %$%
 
 ### Tabla agregada
 
-A continuación, la tabla @F17AdmPre presenta el agregado **histórico**, por **años, semestres, departamentos  y municipios de procedenecia, sexo, edad, estrato, tipo de admisión, facultad, programa, y puntaje** de los admitidos a pregrado en la **Sede Palmira**.
+A continuación, la tabla @fig-F17AdmPre presenta el agregado **histórico**, por **años, semestres, departamentos  y municipios de procedenecia, sexo, edad, estrato, tipo de admisión, facultad, programa, y puntaje** de los admitidos a pregrado en la **Sede Palmira**.
 
 Los interesados en *imprimir*, *copiar* o *descargar* estas cifras, pueden hacerlo a través de las múltiples opciones que se ofrecen en la parte superior izquierda de la tabla que se presenta a continuación (Copiar, CSV, Excel, PDF e Imprimir). Así mismo, esta tabla, dada su naturaleza web, permiten filtrar los resultados por aquellas variables de interés.
 
 <br>
 
 ```{r}
-#| label: F17AdmPre
+#| label: fig-F17AdmPre
 #| echo: false
 #| message: false
 #| warning: false
@@ -844,10 +845,10 @@ El número de aspirantes a postgrado en la **Sede Palmira** de la Universidad Na
 
 ### Evolución histórica
 
-A continuación, la Figura @F1AspPos, presenta la evolución histórica -*desde el periodo 20081*-, del total de aspirantes a postgrado en la sede.
+A continuación, la Figura @fig-F1AspPos, presenta la evolución histórica -*desde el periodo 20081*-, del total de aspirantes a postgrado en la sede.
 
 ```{r}
-#| label: F1AspPos
+#| label: fig-F1AspPos
 #| echo: false
 #| message: false
 #| warning: false
@@ -872,10 +873,10 @@ Agregar(TOTAL ~ YEAR + SEMESTRE,
 
 ### Información por sexo
 
-A continuación, las figuras @F2AspPos y @F3AspPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes a posgrado según el sexo biológico.
+A continuación, las figuras @fig-F2AspPos y @fig-F3AspPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes a posgrado según el sexo biológico.
 
 ```{r}
-#| label: F2AspPos
+#| label: fig-F2AspPos
 #| echo: false
 #| message: false
 #| warning: false
@@ -898,7 +899,7 @@ Agregar(SEXO ~ YEAR + SEMESTRE,
 <br>
 
 ```{r}
-#| label: F3AspPos
+#| label: fig-F3AspPos
 #| echo: false
 #| message: false
 #| warning: false
@@ -924,10 +925,10 @@ Agregar(SEXO ~ YEAR + SEMESTRE,
 
 ### Información por edad
 
-A continuación, las figuras @F4AspPos y @F5AspPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes a posgrado por grupos de edad.
+A continuación, las figuras @fig-F4AspPos y @fig-F5AspPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes a posgrado por grupos de edad.
 
 ```{r}
-#| label: F4AspPos
+#| label: fig-F4AspPos
 #| echo: false
 #| message: false
 #| warning: false
@@ -950,7 +951,7 @@ Agregar(CAT_EDAD ~ YEAR + SEMESTRE,
 <br>
 
 ```{r}
-#| label: F5AspPos
+#| label: fig-F5AspPos
 #| echo: false
 #| message: false
 #| warning: false
@@ -979,10 +980,10 @@ Agregar(CAT_EDAD ~ YEAR + SEMESTRE,
 
 ### Información por estrato socioeconómico
 
-A continuación, las figuras @F6AspPos) y @F7AspPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes a posgrado según el estrato socioeconómico de las viviendas en donde estos residen.
+A continuación, las figuras @fig-F6AspPos y @fig-F7AspPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes a posgrado según el estrato socioeconómico de las viviendas en donde estos residen.
 
 ```{r}
-#| label: F6AspPos
+#| label: fig-F6AspPos
 #| echo: false
 #| message: false
 #| warning: false
@@ -1005,7 +1006,7 @@ Agregar(ESTRATO ~ YEAR + SEMESTRE,
 <br>
 
 ```{r}
-#| label: F7AspPos
+#| label: fig-F7AspPos
 #| echo: false
 #| message: false
 #| warning: false
@@ -1030,10 +1031,10 @@ Agregar(ESTRATO ~ YEAR + SEMESTRE,
 
 ### Tasa de absorción
 
-A continuación, las figuras @F8AspPos y @F9AspPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes admitidos a posgrado en la **Sede Palmira** de la Universidad Nacional de Colombia.
+A continuación, las figuras @fig-F8AspPos y @fig-F9AspPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes admitidos a posgrado en la **Sede Palmira** de la Universidad Nacional de Colombia.
 
 ```{r}
-#| label: F8AspPos
+#| label: fig-F8AspPos
 #| echo: false
 #| message: false
 #| warning: false
@@ -1056,7 +1057,7 @@ Agregar(ADMITIDO ~ YEAR + SEMESTRE,
 <br>
 
 ```{r}
-#| label: F9AspPos
+#| label: fig-F9AspPos
 #| echo: false
 #| message: false
 #| warning: false
@@ -1081,10 +1082,10 @@ Agregar(ADMITIDO ~ YEAR + SEMESTRE,
 
 ### Mapa departamentos y municipios de procedencia
 
-A continuación, la figura @F10AspPos presenta el mapa actual (última convocatoria) con el total de aspirantes a posgrado por departamentos y municipios de procedencia en la **Sede Palmira**.
+A continuación, la figura @fig-F10AspPos presenta el mapa actual (última convocatoria) con el total de aspirantes a posgrado por departamentos y municipios de procedencia en la **Sede Palmira**.
 
 ```{r}
-#| label: F10AspPos
+#| label: fig-F10AspPos
 #| echo: false
 #| message: false
 #| warning: false
@@ -1111,14 +1112,14 @@ AspirantesPos %>% filter(YEAR == ano, SEMESTRE == semestre) %$%
 
 ### Tabla agregada 
 
-A continuación, la tabla @F11AspPos presenta el agregado **histórico**, por **años, semestres, departamentos  y municipios de procedenecia, sexo, edad, estrato y admisión (sí o no)** de los aspirantes a posgrado en la **Sede Palmira**.
+A continuación, la tabla @fig-F11AspPos presenta el agregado **histórico**, por **años, semestres, departamentos  y municipios de procedenecia, sexo, edad, estrato y admisión (sí o no)** de los aspirantes a posgrado en la **Sede Palmira**.
 
 Los interesados en *imprimir*, *copiar* o *descargar* estas cifras, pueden hacerlo a través de las múltiples opciones que se ofrecen en la parte superior izquierda de la tabla que se presenta a continuación (Copiar, CSV, Excel, PDF e Imprimir). Así mismo, esta tabla, dada su naturaleza web, permiten filtrar los resultados por aquellas variables de interés.
 
 <br>
 
 ```{r}
-#| label: F11AspPos
+#| label: fig-F11AspPos
 #| echo: false
 #| message: false
 #| warning: false
@@ -1151,10 +1152,10 @@ El número de admitidos a postgrado en la **Sede Palmira** de la Universidad Nac
 
 ### Evolución histórica
 
-A continuación, la Figura @F1AdmPos, presenta la evolución histórica -*desde el periodo 2008-1*-, del total de admitidos a postgrado en la sede.
+A continuación, la Figura @fig-F1AdmPos, presenta la evolución histórica -*desde el periodo 2008-1*-, del total de admitidos a postgrado en la sede.
 
 ```{r}
-#| label: F1AdmPos
+#| label: fig-F1AdmPos
 #| echo: false
 #| message: false
 #| warning: false
@@ -1179,10 +1180,10 @@ Agregar(TOTAL ~ YEAR + SEMESTRE,
 
 ### Información por sexo
 
-A continuación, las figuras @F2AdmPos y @F3AdmPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a posgrado según el sexo biológico.
+A continuación, las figuras @fig-F2AdmPos y @fig-F3AdmPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a posgrado según el sexo biológico.
 
 ```{r}
-#| label: F2AdmPos
+#| label: fig-F2AdmPos
 #| echo: false
 #| message: false
 #| warning: false
@@ -1204,7 +1205,7 @@ Agregar(SEXO ~ YEAR + SEMESTRE,
 <br>
 
 ```{r}
-#| label: F3AdmPos
+#| label: fig-F3AdmPos
 #| echo: false
 #| message: false
 #| warning: false
@@ -1230,10 +1231,10 @@ Agregar(SEXO ~ YEAR + SEMESTRE,
 
 ### Información por edad
 
-A continuación, las figuras @F4AdmPos y @F5AdmPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a posgrado por grupos de edad.
+A continuación, las figuras @fig-F4AdmPos y @fig-F5AdmPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a posgrado por grupos de edad.
 
 ```{r}
-#| label: F4AdmPos
+#| label: fig-F4AdmPos
 #| echo: false
 #| message: false
 #| warning: false
@@ -1256,7 +1257,7 @@ Agregar(CAT_EDAD ~ YEAR + SEMESTRE,
 <br>
 
 ```{r}
-#| label: F5AdmPos
+#| label: fig-F5AdmPos
 #| echo: false
 #| message: false
 #| warning: false
@@ -1285,10 +1286,10 @@ Agregar(CAT_EDAD ~ YEAR + SEMESTRE,
 
 ### Información por estrato socioeconómico
 
-A continuación, las figuras @F6AdmPos y @F7AdmPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a posgrado según el estrato socioeconómico de las viviendas en donde estos residen.
+A continuación, las figuras @fig-F6AdmPos y @fig-F7AdmPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a posgrado según el estrato socioeconómico de las viviendas en donde estos residen.
 
 ```{r}
-#| label: F6AdmPos
+#| label: fig-F6AdmPos
 #| echo: false
 #| message: false
 #| warning: false
@@ -1311,7 +1312,7 @@ Agregar(ESTRATO ~ YEAR + SEMESTRE,
 <br>
 
 ```{r}
-#| label: F7AdmPos
+#| label: fig-F7AdmPos
 #| echo: false
 #| message: false
 #| warning: false
@@ -1336,10 +1337,10 @@ Agregar(ESTRATO ~ YEAR + SEMESTRE,
 
 ### Información por facultad
 
-A continuación, las figuras @F8AdmPos y @F9AdmPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a posgrado por facultad.
+A continuación, las figuras @fig-F8AdmPos y @fig-F9AdmPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a posgrado por facultad.
 
 ```{r}
-#| label: F8AdmPos
+#| label: fig-F8AdmPos
 #| echo: false
 #| message: false
 #| warning: false
@@ -1362,7 +1363,7 @@ Agregar(FACULTAD ~ YEAR + SEMESTRE,
 <br>
 
 ```{r}
-#| label: F9AdmPos
+#| label: fig-F9AdmPos
 #| echo: false
 #| message: false
 #| warning: false
@@ -1387,10 +1388,10 @@ Agregar(FACULTAD ~ YEAR + SEMESTRE,
 
 ### Información por programa
 
-A continuación, las figuras @:F10AdmPos y @F11AdmPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a posgrado por programa.
+A continuación, las figuras @fig-F10AdmPos y @fig-F11AdmPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de admitidos a posgrado por programa.
 
 ```{r}
-#| label: F10AdmPos
+#| label: fig-F10AdmPos
 #| echo: false
 #| message: false
 #| warning: false
@@ -1413,7 +1414,7 @@ Agregar(PROGRAMA ~ YEAR + SEMESTRE,
 <br>
 
 ```{r}
-#| label: F11AdmPos
+#| label: fig-F11AdmPos
 #| echo: false
 #| message: false
 #| warning: false
@@ -1441,10 +1442,10 @@ Agregar(PROGRAMA ~ YEAR + SEMESTRE,
 
 ### Mapa de departamentos y municipios de procedencia
 
-A continuación, la figura @F14AdmPos presenta el mapa actual (última convocatoria) con el total de admitidos a pregrado por departamentos y municipios de procedencia en la **Sede Palmira**.
+A continuación, la figura @fig-F14AdmPos presenta el mapa actual (última convocatoria) con el total de admitidos a pregrado por departamentos y municipios de procedencia en la **Sede Palmira**.
 
 ```{r}
-#| label: F14AdmPos
+#| label: fig-F14AdmPos
 #| echo: false
 #| message: false
 #| warning: false
@@ -1471,14 +1472,14 @@ AdmitidosPos %>% filter(YEAR == ano, SEMESTRE == semestre) %$%
 
 ### Tabla agregada
 
-A continuación, la tabla @F15AdmPos presenta el agregado **histórico**, por **años, semestres, departamentos  y municipios de procedenecia, sexo, edad, estrato, tipo de admisión, facultad, programa, y puntaje** de los admitidos a postgrado en la **Sede Palmira**.
+A continuación, la tabla @fig-F15AdmPos presenta el agregado **histórico**, por **años, semestres, departamentos  y municipios de procedenecia, sexo, edad, estrato, tipo de admisión, facultad, programa, y puntaje** de los admitidos a postgrado en la **Sede Palmira**.
 
 Los interesados en *imprimir*, *copiar* o *descargar* estas cifras, pueden hacerlo a través de las múltiples opciones que se ofrecen en la parte superior izquierda de la tabla que se presenta a continuación (Copiar, CSV, Excel, PDF e Imprimir). Así mismo, esta tabla, dada su naturaleza web, permiten filtrar los resultados por aquellas variables de interés.
 
 <br>
 
 ```{r}
-#| label: F15AdmPos
+#| label: fig-F15AdmPos
 #| echo: false
 #| message: false
 #| warning: false

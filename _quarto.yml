@@ -3,15 +3,15 @@ project:
   output-dir: docs
 
 book:
-  title: "Boletin Sede Palmira"
+  title: "Boletin estadístico Sede Palmira"
   author: "Jimena Lopez"
   date: "25/11/2022"
   chapters:
     - index.qmd
     - intro.qmd
+    - presentacion.qmd
     - Aspirantes.qmd
-    - summary.qmd
-    - references.qmd
+    - PruebasSaber.qmd
 
 bibliography: references.bib
 
@@ -20,4 +20,5 @@ format:
     theme: cosmo
 
 editor: visual
+delete_merged_file: true
 

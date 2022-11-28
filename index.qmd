@@ -1,9 +1,30 @@
-# Preface {.unnumbered}
-
-This is a Quarto book.
-
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+# Portada {.unnumbered}
 
 ```{r}
-1 + 1
+#| echo: false
+#| fig.align: 'center'
+#| fig-width: 1
+#| fig.show: 'hold'
+knitr::include_graphics('img/Portada.jpg')
 ```
+
+<br/>
+
+<h2>**Comentarios, sugerencias e inquietudes**</h2> 
+
+**AAAA AAAA AAAA**<br/>
+ Cargo: <br/>
+ Email: mail@unal.edu.co <br/>
+ Teléfono: (1) 3165000 extensión ____ <br/>
+
+<h2>**Sistema Estadístico UNAL**</h2> 
+
+El Boletín Estadísco de la **Sede Palmira** de la Universidad Nacional de Colombia hace parte integral del *sistema estadístico institucional*. Para aquellos interesados en conocer la información estadística general de la Universidad así como de las demás sedes que hacen parte de esta institución, los invitamos a ingresar al sitio web de [estadísticas institucionales](http://estadisticas.unal.edu.co/home/) y a conocer los porqués de este sitio expresados en el siguiente video institucional.
+
+<br/>
+
+<html>
+<center>
+<iframe width="580" height="320" src="https://www.youtube.com/embed/D1228EikvoM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center>
+</html>

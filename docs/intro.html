@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Boletin Sede Palmira - 1&nbsp; Introduction</title>
+<title>Boletin estadístico Sede Palmira - Introducción</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,88 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
 </style>
 
 
@@ -112,7 +30,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Aspirantes.html" rel="next">
+<link href="./presentacion.html" rel="next">
 <link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -143,6 +61,33 @@ div.csl-indent {
   }
 }</script>
 
+<script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="site_libs/datatables-binding-0.25.1/datatables.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="site_libs/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="site_libs/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="site_libs/dt-core-1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="site_libs/jszip-1.12.1/jszip.min.js"></script>
+<script src="site_libs/pdfmake-1.12.1/pdfmake.js"></script>
+<script src="site_libs/pdfmake-1.12.1/vfs_fonts.js"></script>
+<link href="site_libs/dt-ext-buttons-1.12.1/css/buttons.dataTables.min.css" rel="stylesheet">
+<script src="site_libs/dt-ext-buttons-1.12.1/js/dataTables.buttons.min.js"></script>
+<script src="site_libs/dt-ext-buttons-1.12.1/js/buttons.html5.min.js"></script>
+<script src="site_libs/dt-ext-buttons-1.12.1/js/buttons.colVis.min.js"></script>
+<script src="site_libs/dt-ext-buttons-1.12.1/js/buttons.print.min.js"></script>
+<link href="site_libs/dt-ext-keytable-1.12.1/css/keyTable.dataTables.min.css" rel="stylesheet">
+<script src="site_libs/dt-ext-keytable-1.12.1/js/dataTables.keyTable.min.js"></script>
+<link href="site_libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
+<script src="site_libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+<link href="site_libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet">
+<script src="site_libs/selectize-0.12.0/selectize.min.js"></script>
+<link href="site_libs/dt-plugin-searchhighlight-1.12.1/source.css" rel="stylesheet">
+<script src="site_libs/dt-plugin-searchhighlight-1.12.1/jquery.highlight.js"></script>
+<script src="site_libs/dt-plugin-searchhighlight-1.12.1/source.min.js"></script>
+<link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+
 
 </head>
 
@@ -152,7 +97,7 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
+      <h1 class="quarto-secondary-nav-title">Introducción</h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -165,7 +110,7 @@ div.csl-indent {
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Boletin Sede Palmira</a> 
+      <a href="./">Boletin estadístico Sede Palmira</a> 
     </div>
       </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
@@ -177,27 +122,27 @@ div.csl-indent {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">Preface</a>
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Portada</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a>
+  <a href="./intro.html" class="sidebar-item-text sidebar-link active">Introducción</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Aspirantes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Aspirantes y Admitidos</span></a>
+  <a href="./presentacion.html" class="sidebar-item-text sidebar-link">Presentación</a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></a>
+  <a href="./Aspirantes.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Aspirantes y Admitidos</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  <a href="./PruebasSaber.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Pruebas Saber Pro</span></a>
   </div>
 </li>
     </ul>
@@ -205,14 +150,25 @@ div.csl-indent {
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#subsec-mision" id="toc-subsec-mision" class="nav-link active" data-scroll-target="#subsec-mision">Misión</a></li>
+  <li><a href="#sec-vision" id="toc-sec-vision" class="nav-link" data-scroll-target="#sec-vision">Visión</a></li>
+  <li><a href="#sec-hist" id="toc-sec-hist" class="nav-link" data-scroll-target="#sec-hist">Historia</a></li>
+  <li><a href="#sec-ubica" id="toc-sec-ubica" class="nav-link" data-scroll-target="#sec-ubica">Ubicación</a></li>
+  <li><a href="#sec-indbas" id="toc-sec-indbas" class="nav-link" data-scroll-target="#sec-indbas">Indicadores básicos</a></li>
+  <li><a href="#sec-prog" id="toc-sec-prog" class="nav-link" data-scroll-target="#sec-prog">Programas académicos</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
+<h1 class="title"><span id="sec-intro" class="quarto-section-identifier d-none d-lg-block">Introducción</span></h1>
 </div>
 
 
@@ -226,21 +182,52 @@ div.csl-indent {
 
 </header>
 
-<p>This is a book created from markdown and executable code.</p>
-<p>See <span class="citation" data-cites="knuth84">Knuth (<a href="references.html#ref-knuth84" role="doc-biblioref">1984</a>)</span> for additional discussion of literate programming.</p>
+<section id="subsec-mision" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="subsec-mision">Misión</h2>
+<p>Como Universidad de la Nación fomenta el acceso con equidad al sistema educativo colombiano, provee la mayor oferta de programas académicos, forma profesionales competentes y socialmente responsables. Contribuye a la elaboración y resignificación del proyecto de Nación, estudia y enriquece el patrimonio cultural, natural y ambiental del país. Como tal lo asesora en los órdenes científico, tecnológico, cultural y artístico con autonomía académica e investigativa.</p>
+</section>
+<section id="sec-vision" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-vision">Visión</h2>
+<p>La Universidad Nacional de Colombia, de acuerdo con su misión, definida en el Decreto Extraordinario 1210 de 1993, debe fortalecer su carácter nacional mediante la articulación de proyectos nacionales y regionales, que promuevan el avance en los campos social, científico, tecnológico, artístico y filosófico del país. En este horizonte es la Universidad, en su condición de entidad de educación superior y pública, la que habrá de permitir a todo colombiano que sea admitido en ella, llevar a cabo estudios de pregrado y posgrado de la más alta calidad bajo criterios de equidad, reconociendo las diversas orientaciones de tipo académico e ideológico, y soportada en el Sistema de Bienestar Universitario que es transversal a sus ejes misionales de docencia, investigación y extensión.</p>
+<p>Se mantendrá como la mejor Universidad del país, y habrá de constituirse en la primera universidad colombiana de clase mundial y una de las más importantes de América Latina y el Caribe, con pregrados y posgrados de alta calidad, dotados de infraestructura y técnicas didácticas modernas y flexibles que faciliten una rápida respuesta de la comunidad académica a los cambios y nuevos retos de su entorno e inserción en el mundo global. La Universidad Nacional influirá también en el desarrollo de la educación básica, media y tecnológica de calidad y liderará, a través de sus prácticas docentes e investigativas, el Sistema de Educación Superior Pública del país.</p>
+<p>La Universidad ofrecerá posgrados basados en la generación de conocimiento y en su uso para la solución de problemas fundamentales de la sociedad colombiana; del mismo modo, llevará a cabo investigación y extensión de frontera y relevante, con estrecha comunicación entre la Universidad y sectores productivos, sociales y gubernamentales del país.</p>
+<p>Habrá un énfasis especial en el desarrollo de investigación desde múltiples formas organizativas (grupos, centros disciplinares y temáticos, institutos inter y transdisciplinarios) coordinadas en un sistema con metas claras, con políticas de fomento e instrumentos de comunicación eficaces, así como con programas integrados a grupos y redes en los ámbitos nacional e internacional. Los proyectos de investigación serán en gran medida comunes a pregrados y posgrados, y tendrán canales de flujo expeditos entre ellos. Los pregrados y posgrados estarán enlazados y deberán interactuar con los programas de investigación y extensión a través de los propios profesores investigadores, la participación en los semilleros y grupos de investigación, la realización de seminarios permanentes de socialización y validación social de los resultados de la investigación y extensión, entre otras, difundiendo los productos de la investigación en libros de texto y revistas nacionales e internacionales, y a través incluso de los medios masivos de divulgación.</p>
+<p>Así mismo, la Universidad fortalecerá los programas de extensión o integración con la sociedad y sus instituciones que responderán a las necesidades sociales fundamentales a través de proyectos de iniciativa universitaria y estará fuertemente relacionada con la investigación y la docencia. Usará el conocimiento generado para producir a través de sus egresados y de los impactos de la investigación y extensión bienestar, crecimiento y desarrollo económico y social con equidad.</p>
+<p>La Universidad tendrá entonces una vida institucional activa, soportada en un Sistema de Bienestar Universitario que propenda por una universidad saludable, con un modelo de comunicación y una estructura de gestión que permitan la toma de decisiones efectivas, con participación real de la comunidad universitaria[1]. Será una universidad que se piense permanentemente y reflexione sobre los problemas estructurales del país. Esto le permitirá ser una institución matriz de conservación y de cambio al utilizar eficientemente la extraordinaria diversidad de conocimiento sistemático que alberga; diversidad que se expresa tanto en el número de sus disciplinas como en la multiplicidad de sus enfoques y posturas filosóficas e ideológicas. Al seguir este camino podrá ser efectivamente líder del pensamiento, de la intelectualidad y de la creación artística colombianos: formará los líderes en el campo de la ciencia y la tecnología que el país necesita para hacer sostenible su progreso, y a los ciudadanos que hacen su tránsito académico por la Universidad les proporcionará las condiciones para el desarrollo intelectual e integral al que tienen derecho como seres humanos y ciudadanos de este país, permitiéndoles proyectarse al mundo globalizado. En fin, la Institución será una academia que participe activa y crítica y constructivamente en la reflexión sobre el desarrollo y la identidad nacional, promotora de lenguajes para comunicarse con el resto de la sociedad.</p>
+</section>
+<section id="sec-hist" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-hist">Historia</h2>
+</section>
+<section id="sec-ubica" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-ubica">Ubicación</h2>
+<p>La Sede Palmira de la Universidad Nacional de Colombia se encuentra ubicada en la Cra. 32 # 12 - 00, municipio de Palmira, Valle del Cauca, Colombia.</p>
+
+<center>
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15929.298584971719!2d-76.3074038!3d3.5121776!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3a05053bb70673%3A0xdaf4e20d221efefd!2sUniversidad%20Nacional%20de%20Colombia%20Sede%20Palmira!5e0!3m2!1ses!2sco!4v1664202682004!5m2!1ses!2sco" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+
+</center>
+
+</section>
+<section id="sec-indbas" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-indbas">Indicadores básicos</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<div class="cell-output-display">
+
+<div id="htmlwidget-3b859b05d0578bb69765" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3b859b05d0578bb69765">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;Número de estudiantes matriculados doctorado&quot;,&quot;Número de estudiantes matriculados maestría&quot;,&quot;Número de estudiantes matriculados pregrado&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;59&quot;,&quot;225&quot;,&quot;2634&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;55&quot;,&quot;183&quot;,&quot;2753&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;51&quot;,&quot;180&quot;,&quot;2793&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;51&quot;,&quot;165&quot;,&quot;2715&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;47&quot;,&quot;158&quot;,&quot;2665&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n<\/tr>","class":"compact nowrap hover row-border","extensions":["Buttons","KeyTable"],"caption":"<caption><\/caption>","data":[["Número de estudiantes matriculados pregrado","Número de estudiantes matriculados maestría","Número de estudiantes matriculados doctorado"],["2634","225","59"],["2753","183","55"],["2793","180","51"],["2715","165","51"],["2665","158","47"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th colspan=\"6\">Indicadores básicos de la Sede: Matriculados<\/th>\n    <\/tr>\n    <tr>\n      <th>Descripcion<\/th>\n      <th>2020_1<\/th>\n      <th>2020_2<\/th>\n      <th>2021_1<\/th>\n      <th>2021_2<\/th>\n      <th>2022_1<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"autoWidth":true,"columnDefs":[{"className":"dt-center","targets":[0,1,2,3,4,5]},[],{"width":"65px","targets":0}],"pageLength":8,"order":[[0,"desc"],[1,"asc"]],"dom":"Bfrtip","keys":true,"searchHighlight":true,"scrollX":true,"initComplete":"function(settings, json) {\n$(this.api().table().header()).css({'background-color':\n'#4CFF49'\n, 'color': '#000000'});\n}","language":{"processing":"Procesando...","lengthMenu":"Mostrar _MENU_ registros","zeroRecords":"No se encontraron resultados","emptyTable":"Ningún dato disponible en esta tabla","info":"Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros","infoEmpty":"Mostrando registros del 0 al 0 de un total de 0 registros","infoFiltered":"(filtrado de un total de _MAX_ registros)","infoPostFix":"","search":"Buscar:","url":"","infoThousands":",","loadingRecords":"Cargando...","paginate":{"first":"Primero","last":"Último","next":"Siguiente","previous":"Anterior"},"aria":{"sortAscending":"Activar para ordenar la columna de manera ascendente","sortDescending":"Activar para ordenar la columna de manera descendente"}},"buttons":[{"extend":"copy","text":"Copiar"},"csv","excel",{"extend":"pdf","pageSize":"A4","filename":"pdf","message":"","title":"Indicadores básicos de la Sede: Matriculados"},{"extend":"print","text":"Imprimir","pageSize":"A4","message":"","title":"Indicadores básicos de la Sede: Matriculados"}],"orderClasses":false,"orderCellsTop":true,"lengthMenu":[8,10,25,50,100]}},"evals":["options.initComplete"],"jsHooks":[]}</script>
 </div>
 </div>
+<div class="cell">
+
+</div>
+</section>
+<section id="sec-prog" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="sec-prog">Programas académicos</h2>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
-<div id="ref-knuth84" class="csl-entry" role="doc-biblioentry">
-Knuth, Donald E. 1984. <span>“Literate Programming.”</span> <em>Comput. J.</em> 27 (2): 97–111. <a href="https://doi.org/10.1093/comjnl/27.2.97">https://doi.org/10.1093/comjnl/27.2.97</a>.
-</div>
-</div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -344,12 +331,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Portada</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Aspirantes.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Aspirantes y Admitidos</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./presentacion.html" class="pagination-link">
+        <span class="nav-page-text">Presentación</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
