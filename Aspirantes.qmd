@@ -80,10 +80,10 @@ En la parte final de esta sección se presenta una tabla agregada con las combin
 
 ### Evolución histórica
 
-A continuación, la Figura \@ref(fig:F1AspPre), presenta la evolución histórica -*desde el periodo 2008*-, del total de aspirantes a pregrado en la sede.
+A continuación, la Figura @fig-F1AspPre, presenta la evolución histórica -*desde el periodo 2008*-, del total de aspirantes a pregrado en la sede.
 
 ```{r}
-#| label: F1AspPre
+#| label: fig-F1AspPre
 #| echo: false
 #| message: false
 #| warning: false
@@ -109,10 +109,10 @@ Agregar(TOTAL ~ YEAR + SEMESTRE,
 
 ### Información por sexo
 
-A continuación, las figuras @F2AspPre y @F3AspPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes a pregrado según el sexo biológico.
+A continuación, las figuras @fig-F2AspPre y @fig-F3AspPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de aspirantes a pregrado según el sexo biológico.
 
 ```{r}
-#| label: F2AspPre
+#| label: fig-F2AspPre
 #| echo: false
 #| message: false
 #| warning: false
