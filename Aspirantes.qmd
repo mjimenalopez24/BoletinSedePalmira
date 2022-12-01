@@ -1,3 +1,13 @@
+---
+crossref:
+  chapters: true
+  fig-title: 'Figura' 
+  tbl-title: 'Tabla'     
+  title-delim: '.'     
+  fig-prefix: 'Figura'  
+  tbl-prefix: 'Tabla'
+---
+
 # Aspirantes y Admitidos {#sec-Aspirantes}
 
 <!-- CARGAR BASE DE ASPIRANTES -->
@@ -48,35 +58,29 @@ AdmitidosPos <- AspirantesPos %>% filter(MOD_INS == "Regular", ADMITIDO == "Sí"
 tema <- 5
 ```
 
-Este capítulo presenta el consolidado de las principales características asociadas a la información estadística oficial de los aspirantes y admitidos a pregrado y postgrado en la **Sede Palmira** de la Universidad Nacional de Colombia. A continuación, se presenta una breve descripción de las secciones que hacen parte de este capítulo, así como la ubicación del sitio web en donde se presentan las definiciones, los estándares y las codificaciones/clasificaciones que hacen parte de la información acá contenida (*metadatos*) y cuya exploración y lectura, sin duda, facilitará el entendimiento de las cifras asociadas a las poblaciones de aspirantes y admitidos en esta sede de la Universidad. 
+Este capítulo presenta el consolidado de las principales características asociadas a la información estadística oficial de los aspirantes y admitidos a pregrado y postgrado en la **Sede Palmira** de la Universidad Nacional de Colombia. A continuación, se presenta una breve descripción de las secciones que hacen parte de este capítulo, así como la ubicación del sitio web en donde se presentan las definiciones, los estándares y las codificaciones/clasificaciones que hacen parte de la información acá contenida (*metadatos*) y cuya exploración y lectura, sin duda, facilitará el entendimiento de las cifras asociadas a las poblaciones de aspirantes y admitidos en esta sede de la Universidad.
 
+<h3>**Secciones**</h3>
 
-<h3>**Secciones**</h3> 
+-   [Aspirantes a pregrado -@sec-AspPre]: contiene la información oficial del total de aspirantes a pregrado en la **Sede Palmira** de la Universidad Nacional de Colombia.
 
+-   [Admitidos a pregrado -@sec-AdmPre]: contiene la información oficial del total de admitidos a pregrado en la **Sede Palmira** de la Universidad Nacional de Colombia.
 
-* [Aspirantes a pregrado](#AspPre): contiene la información oficial del total de aspirantes a pregrado en la **Sede Palmira** de la Universidad Nacional de Colombia.
+-   [Aspirantes a postgrado -@sec-AspPos]: contiene la información oficial del total de aspirantes a los programas de postgrado de la **Sede Palmira** de la Universidad Nacional de Colombia.
 
-* [Admitidos a pregrado](#AdmPre): contiene la información oficial del total de admitidos a pregrado en la **Sede Palmira** de la Universidad Nacional de Colombia.
-
-
-* [Aspirantes a postgrado](#AspPos): contiene la información oficial del total de aspirantes a los programas de postgrado de la **Sede Palmira** de la Universidad Nacional de Colombia.
-
-* [Admitidos a postgrado](#AdmPos): contiene la información oficial del total de admitidos a los programas de postgrado de la **Sede Palmira** de la Universidad Nacional de Colombia .
-
+-   [Admitidos a postgrado -@sec-AdmPos]: contiene la información oficial del total de admitidos a los programas de postgrado de la **Sede Palmira** de la Universidad Nacional de Colombia .
 
 <h3>**Metadatos**</h3>
 
 La construcción de las cifras oficiales de aspirantes y admitidos a la **Sede Palmira**, las definiciones que hacen parte de estas, así como las codificaciones y clasificaciones aquí empleadas se encuentran contenidas en la sección **Aspirantes y Admitidos** del capítulo de *Metadatos* de las cifras oficiales generales que hacen parte de la página de [estadísticas](http://estadisticas.unal.edu.co/home/) de la Universidad Nacional de Colombia. Invitamos a los lectores a explorar y conocer estos metadatos los cuales, además de orientar y facilitar el entendimiento de la información acá expuesta, se encuentran disponibles en el siguiente enlace.
 
-* [Metadatos Cifras Oficiales Universidad Nacional de Colombia](http://estadisticas.unal.edu.co/menu-principal/cifras-generales/metadatos/cifras-generales/)
+-   [Metadatos Cifras Oficiales Universidad Nacional de Colombia](http://estadisticas.unal.edu.co/menu-principal/cifras-generales/metadatos/cifras-generales/)
 
+## Aspirantes a pregrado {#sec-AspPre}
 
-## Aspirantes a pregrado {#AspPre}
-
-A continuación, se presentan las principales características asociadas a los aspirantes a pregrado de la **Sede Palmira** de la Universidad Nacional de Colombia. En específico, se presenta la evolución histórica de los aspirantes a pregrado desde diferentes perspectivas: general, sexo, grupos de edad,  estrato socioeconómico, tasa de absorción y departamentos y municipios de procedencia de los mismos. Para cada una de las variables analizadas se presenta la evolución histórica (*serie de tiempo*) así como el comportamiento actual (*estado actual*) derivado de las últimas mediciones disponibles.
+A continuación, se presentan las principales características asociadas a los aspirantes a pregrado de la **Sede Palmira** de la Universidad Nacional de Colombia. En específico, se presenta la evolución histórica de los aspirantes a pregrado desde diferentes perspectivas: general, sexo, grupos de edad, estrato socioeconómico, tasa de absorción y departamentos y municipios de procedencia de los mismos. Para cada una de las variables analizadas se presenta la evolución histórica (*serie de tiempo*) así como el comportamiento actual (*estado actual*) derivado de las últimas mediciones disponibles.
 
 En la parte final de esta sección se presenta una tabla agregada con las combinaciones de las variables ilustradas previamente. El usuario que así lo desee, puede descargar esta tabla y analizar la información como a bien lo desee.
-
 
 ### Evolución histórica
 
@@ -105,6 +109,7 @@ Agregar(TOTAL ~ YEAR + SEMESTRE,
                libreria = c("highcharter"), 
                estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = Msj)) 
 ```
+
 <br>
 
 ### Información por sexo
@@ -346,20 +351,20 @@ AspirantesPre %>% filter(YEAR == ano, SEMESTRE == semestre) %$%
 
 <br>
 
-### Tabla agregada 
+### Tabla agregada
 
-A continuación, la tabla @tbl-F11AspPre presenta el agregado **histórico**, por **años, semestres, departamentos  y municipios de procedenecia, sexo, edad, estrato y admisión (sí o no)** de los aspirantes a pregrado en la **Sede Palmira**.
+A continuación, la tabla @fig-F11AspPre presenta el agregado **histórico**, por **años, semestres, departamentos y municipios de procedenecia, sexo, edad, estrato y admisión (sí o no)** de los aspirantes a pregrado en la **Sede Palmira**.
 
 Los interesados en *imprimir*, *copiar* o *descargar* estas cifras, pueden hacerlo a través de las múltiples opciones que se ofrecen en la parte superior izquierda de la tabla que se presenta a continuación (Copiar, CSV, Excel, PDF e Imprimir). Así mismo, esta tabla, dada su naturaleza web, permiten filtrar los resultados por aquellas variables de interés.
 
 <br>
 
 ```{r}
-#| label: tbl-F11AspPre
+#| label: fig-F11AspPre
 #| echo: false
 #| message: false
 #| warning: false
-#| tbl-cap: >
+#| fig-cap: >
 #|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Asp_Pre_Tabla <- AspirantesPre %>% group_by(YEAR, SEMESTRE, DEP_RES, CIU_RES, SEXO, CAT_EDAD, ESTRATO, ADMITIDO) %>% summarise(Total=n()) %>% select(YEAR, SEMESTRE, DEP_RES, CIU_RES, SEXO, CAT_EDAD, ESTRATO, ADMITIDO, Total) %>% ungroup() %>% mutate(across(where(is.character), replace_na,  replace = "SIN INFORMACIÓN")) 
@@ -372,9 +377,9 @@ UnalR::Tabla.General(datos = Asp_Pre_Tabla,
 
 ```
 
-## Admitidos a pregrado {#AdmPre}
+## Admitidos a pregrado {#sec-AdmPre}
 
-A continuación, se presentan las principales características asociadas a los admitidos a pregrado de la **Sede Palmira** de la Universidad Nacional de Colombia. En específico, se presenta la evolución histórica de los admitidos a pregrado desde diferentes perspectivas: general, sexo, grupos de edad,  estrato socioeconómico, tipo de admisión, departamentos y municipios de procedencia así como los programas académicos, las facultades y las sedes andinas en las que estos se encuentran ubicados. Para cada una de las variables analizadas se presenta la evolución histórica (*serie de tiempo*) así como el comportamiento actual (*estado actual*) derivado de las últimas mediciones disponibles.
+A continuación, se presentan las principales características asociadas a los admitidos a pregrado de la **Sede Palmira** de la Universidad Nacional de Colombia. En específico, se presenta la evolución histórica de los admitidos a pregrado desde diferentes perspectivas: general, sexo, grupos de edad, estrato socioeconómico, tipo de admisión, departamentos y municipios de procedencia así como los programas académicos, las facultades y las sedes andinas en las que estos se encuentran ubicados. Para cada una de las variables analizadas se presenta la evolución histórica (*serie de tiempo*) así como el comportamiento actual (*estado actual*) derivado de las últimas mediciones disponibles.
 
 En la parte final de esta sección se presenta una tabla agregada con las combinaciones de las variables ilustradas previamente. El usuario que así lo desee, puede descargar esta tabla y analizar la información como a bien lo desee.
 
@@ -746,7 +751,7 @@ Plot.Boxplot(
 )
 ```
 
-<br> 
+<br>
 
 ```{r}
 #| label: fig-F15AdmPre
@@ -805,7 +810,7 @@ AdmitidosPre %>% filter(YEAR == ano, SEMESTRE == semestre) %$%
 
 ### Tabla agregada
 
-A continuación, la tabla @fig-F17AdmPre presenta el agregado **histórico**, por **años, semestres, departamentos  y municipios de procedenecia, sexo, edad, estrato, tipo de admisión, facultad, programa, y puntaje** de los admitidos a pregrado en la **Sede Palmira**.
+A continuación, la tabla @fig-F17AdmPre presenta el agregado **histórico**, por **años, semestres, departamentos y municipios de procedenecia, sexo, edad, estrato, tipo de admisión, facultad, programa, y puntaje** de los admitidos a pregrado en la **Sede Palmira**.
 
 Los interesados en *imprimir*, *copiar* o *descargar* estas cifras, pueden hacerlo a través de las múltiples opciones que se ofrecen en la parte superior izquierda de la tabla que se presenta a continuación (Copiar, CSV, Excel, PDF e Imprimir). Así mismo, esta tabla, dada su naturaleza web, permiten filtrar los resultados por aquellas variables de interés.
 
@@ -829,18 +834,32 @@ UnalR::Tabla.General(datos = Adm_Pre_Tabla,
 
 ```
 
-## Aspirantes a postgrado {#AspPos}
+## Aspirantes a postgrado {#sec-AspPos}
 
 A continuación, se presentan las principales características asociadas a los aspirantes a postgrado de la **Sede Palmira** de la Universidad Nacional de Colombia (por inscripción regular). En específico, se presenta la evolución histórica de los aspirantes a postgrado desde diferentes perspectivas: general, sexo, grupos de edad, estrato socioeconómico, tasa de absorción y departamentos y municipios de procedencia de los mismos. Para cada una de las variables analizadas se presenta la evolución histórica (*serie de tiempo*) así como el comportamiento actual (*estado actual*) derivado de las últimas mediciones disponibles.
 
 En la parte final de esta sección se presenta una tabla agregada con las combinaciones de las variables ilustradas previamente. El usuario que así lo desee, puede descargar esta tabla y analizar la información como a bien lo desee.
 
 <br>
+
 <blockquote>
-<p><strong><p style="color:red;">Nota: aspirantes a postgrado </p></strong><br>
-El número de aspirantes a postgrado en la **Sede Palmira** de la Universidad Nacional de Colombia es bajo. Este hecho implica leer con precaución las frecuencias relativas (porcentajes) asociadas a algunos de los resultados que se presentan a continuación. Estos, por por los bajos tamaños poblacionales existentes, son altamentente inestables/volátiles.
+
+<p>
+
+<strong>
+
+<p style="color:red;">
+
+Nota: aspirantes a postgrado
+
 </p>
+
+</strong><br> El número de aspirantes a postgrado en la **Sede Palmira** de la Universidad Nacional de Colombia es bajo. Este hecho implica leer con precaución las frecuencias relativas (porcentajes) asociadas a algunos de los resultados que se presentan a continuación. Estos, por por los bajos tamaños poblacionales existentes, son altamentente inestables/volátiles.
+
+</p>
+
 </blockquote>
+
 <br>
 
 ### Evolución histórica
@@ -1110,9 +1129,9 @@ AspirantesPos %>% filter(YEAR == ano, SEMESTRE == semestre) %$%
 
 <br>
 
-### Tabla agregada 
+### Tabla agregada
 
-A continuación, la tabla @fig-F11AspPos presenta el agregado **histórico**, por **años, semestres, departamentos  y municipios de procedenecia, sexo, edad, estrato y admisión (sí o no)** de los aspirantes a posgrado en la **Sede Palmira**.
+A continuación, la tabla @fig-F11AspPos presenta el agregado **histórico**, por **años, semestres, departamentos y municipios de procedenecia, sexo, edad, estrato y admisión (sí o no)** de los aspirantes a posgrado en la **Sede Palmira**.
 
 Los interesados en *imprimir*, *copiar* o *descargar* estas cifras, pueden hacerlo a través de las múltiples opciones que se ofrecen en la parte superior izquierda de la tabla que se presenta a continuación (Copiar, CSV, Excel, PDF e Imprimir). Así mismo, esta tabla, dada su naturaleza web, permiten filtrar los resultados por aquellas variables de interés.
 
@@ -1136,18 +1155,32 @@ UnalR::Tabla.General(datos = Asp_Pos_Tabla,
 
 ```
 
-## Admitidos a postgrado {#AdmPos}
+## Admitidos a postgrado {#sec-AdmPos}
 
 A continuación, se presentan las principales características asociadas a los admitidos a postgrado de la **Sede Palmira** de la Universidad Nacional de Colombia (por inscripción regular). En específico, se presenta la evolución histórica de los admitidos en este nivel de formación desde diferentes perspectivas: general, sexo, grupos de edad, estrato socioeconómico y departamentos y municipios de procedencia de los mismos. Para cada una de las variables analizadas se presenta la evolución histórica (*serie de tiempo*) así como el comportamiento actual (*estado actual*) derivado de las últimas mediciones disponibles.
 
 En la parte final de esta sección se presenta una tabla agregada con las combinaciones de las variables ilustradas previamente. El usuario que así lo desee, puede descargar esta tabla y analizar la información como a bien lo desee.
 
 <br>
+
 <blockquote>
-<p><strong><p style="color:red;">Nota: admitidos a postgrado </p></strong><br>
-El número de admitidos a postgrado en la **Sede Palmira** de la Universidad Nacional de Colombia es bajo. Este hecho implica leer con precaución las frecuencias relativas (porcentajes) asociadas a algunos de los resultados que se presentan a continuación. Estos, por por los bajos tamaños poblacionales existentes, son altamentente inestables/volátiles.
+
+<p>
+
+<strong>
+
+<p style="color:red;">
+
+Nota: admitidos a postgrado
+
 </p>
+
+</strong><br> El número de admitidos a postgrado en la **Sede Palmira** de la Universidad Nacional de Colombia es bajo. Este hecho implica leer con precaución las frecuencias relativas (porcentajes) asociadas a algunos de los resultados que se presentan a continuación. Estos, por por los bajos tamaños poblacionales existentes, son altamentente inestables/volátiles.
+
+</p>
+
 </blockquote>
+
 <br>
 
 ### Evolución histórica
@@ -1472,7 +1505,7 @@ AdmitidosPos %>% filter(YEAR == ano, SEMESTRE == semestre) %$%
 
 ### Tabla agregada
 
-A continuación, la tabla @fig-F15AdmPos presenta el agregado **histórico**, por **años, semestres, departamentos  y municipios de procedenecia, sexo, edad, estrato, tipo de admisión, facultad, programa, y puntaje** de los admitidos a postgrado en la **Sede Palmira**.
+A continuación, la tabla @fig-F15AdmPos presenta el agregado **histórico**, por **años, semestres, departamentos y municipios de procedenecia, sexo, edad, estrato, tipo de admisión, facultad, programa, y puntaje** de los admitidos a postgrado en la **Sede Palmira**.
 
 Los interesados en *imprimir*, *copiar* o *descargar* estas cifras, pueden hacerlo a través de las múltiples opciones que se ofrecen en la parte superior izquierda de la tabla que se presenta a continuación (Copiar, CSV, Excel, PDF e Imprimir). Así mismo, esta tabla, dada su naturaleza web, permiten filtrar los resultados por aquellas variables de interés.
 
@@ -1495,4 +1528,3 @@ UnalR::Tabla.General(datos = Adm_Pos_Tabla,
                      colNames = c("Año","Semestre","Departamento de residencia","Ciudad de residencia","Sexo","Edad","Estrato","Modalidad de inscripción", "Facultad","Programa","Total"))
 
 ```
-

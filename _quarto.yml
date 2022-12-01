@@ -4,14 +4,36 @@ project:
 
 book:
   title: "Boletin estadístico Sede Palmira"
-  author: "Jimena Lopez"
-  date: "25/11/2022"
+  author: "Dirección Nacional de Planeación y Estadística"
+  reader-mode: true
+  favicon: 'img/Logotipo_UNAL.png'
+  page-footer:
+    left:
+      - text: "Boletin estadístico"
+    right:
+      - text: "Universidad Nacional Sede Palmira"
+        href: https://www.palmira.unal.edu.co/
+  navbar:
+    search: true
+    right:
+      - icon: github
+        href: https://mjimenalopez24.github.io/BoletinSedePalmira/
+        aria-label: GitHub
+    background: '#8cc63f'
+  sidebar:
+    logo: 'img/Logotipo_UNAL.png'
+
   chapters:
     - index.qmd
     - intro.qmd
     - presentacion.qmd
     - Aspirantes.qmd
+    - PoblacionEstudiantil.qmd
+    - MatriculadosPV.qmd
+    - Graduados.qmd
+    - TalentoHumano.qmd
     - PruebasSaber.qmd
+
 
 bibliography: references.bib
 

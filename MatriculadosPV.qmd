@@ -1,0 +1,852 @@
+---
+crossref:
+  chapters: true
+  fig-title: 'Figura' 
+  tbl-title: 'Tabla'     
+  title-delim: '.'     
+  fig-prefix: 'Figura'  
+  tbl-prefix: 'Tabla'
+---
+
+# Matriculados por primera vez {#sec-MatPV}
+
+<!-- CARGAR BASE DE MATRICULADOS -->
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+# librerías requeridas
+library(UnalData)
+library(UnalR)
+library(tidyverse)
+library(magrittr)
+
+# Base de datos de matriculados a la Sede Palmira
+
+MatriculadosPV <- UnalData::Matriculados %>% select(-PROGRAMA) %>%
+  filter(SEDE_NOMBRE_MAT %in% c('Palmira'), MAT_PVEZ == "Sí") %>%
+  left_join(select(UnalData::Hprogramas,SNIES_PROGRA,COD_PADRE,PROGRAMA), by= "SNIES_PROGRA") %>%
+  # Transformación CAT_EDAD -> categorias bien definidas
+  mutate(TOTAL = "Total",
+         # Transformación FACULTAD -> categorias bien definidas
+         FACULTAD = ifelse(FACULTAD == "Ingenieria y administración", "Ingeniería y administración",
+                           FACULTAD))
+
+Agregado <- MatriculadosPV %>% group_by(YEAR, SEMESTRE) %>% count()
+ano <- max(Agregado %>% select(YEAR))
+semestre <- Agregado[[nrow(Agregado), "SEMESTRE"]]
+etiqueta <- paste0(" ", ano, "-", semestre)
+
+# Bases por nivel de formación
+MatriculadosPVPre <- MatriculadosPV %>% filter(TIPO_NIVEL == "Pregrado") %>%
+  # Transformación EDAD -> categorias bien definidas
+  mutate(CAT_EDAD = case_when(EDAD_MOD <= 17 ~ '17 años o menos',
+                              EDAD_MOD >= 18 & EDAD_MOD <= 20 ~ '18 a 20 años',
+                              EDAD_MOD >= 21 & EDAD_MOD <= 25 ~ '21 a 25 años',
+                              EDAD_MOD >= 26 ~ '26 o más años',
+                              is.na(EDAD_MOD) ~ 'Sin información'))
+MatriculadosPVPos <- MatriculadosPV %>% filter(TIPO_NIVEL == "Postgrado", MOD_ADM == "Regular")
+
+tema <- 5
+```
+
+Este capítulo presenta el consolidado de las principales características asociadas a la información estadística oficial de los estudiantes matriculados por primera vez en pregrado y postgrado en la **Sede Palmira** de la Universidad Nacional de Colombia. A continuación, se presenta una breve descripción de las secciones que hacen parte de este capítulo. 
+
+
+<h3>**Secciones**</h3> 
+
+
+* [Estudiantes de pregrado -@sec-MatPVPre]: contiene la información oficial del total de estudiantes matriculados por primera vez en pregrado en la **Sede Palmira** de la Universidad Nacional de Colombia.
+
+* [Estudiantes de postgrado -@sec-MatPVPos]: contiene la información oficial del total de estudiantes matriculados por primera vez en los programas de postgrado de la **Sede Palmira** de la Universidad Nacional de Colombia.
+
+<h3>**Metadatos**</h3>
+
+La construcción de las cifras oficiales de estudiantes matriculados por primera vez en la **Sede Palmira**, las definiciones que hacen parte de estas, así como las codificaciones y clasificaciones aquí empleadas se encuentran contenidas en la sección **Matriculados** del capítulo de *Metadatos* de las cifras oficiales generales que hacen parte de la página de [estadísticas](http://estadisticas.unal.edu.co/home/) de la Universidad Nacional de Colombia. Invitamos a los lectores a explorar y conocer estos metadatos los cuales, además de orientar y facilitar el entendimiento de la información acá expuesta, se encuentran disponibles en el siguiente enlace.
+
+* [Metadatos Cifras Oficiales Universidad Nacional de Colombia](http://estadisticas.unal.edu.co/menu-principal/cifras-generales/metadatos/cifras-generales/)
+
+
+## Pregrado {#sec-MatPVPre}
+
+### Evolución histórica
+
+A continuación, la Figura @fig-F1MatPVPre, presenta la evolución histórica -*desde el periodo 2009*-, de matriculados por primera vez en pregrado en la sede.
+
+```{r}
+#| label: fig-F1MatPVPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Msj <- "Información disponible desde 2009-1"
+
+Agregar(TOTAL ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = MatriculadosPVPre,
+                    textNA = "Sin información") %>%  
+              Plot.Series(categoria = "TOTAL", 
+               colores = c("#8cc63f"), # verde, Total 
+               titulo = "Evolución histórica del número de matriculados por primera vez en pregrado", 
+               labelY = "Número de matriculados", 
+               ylim = c(0,NaN),
+               libreria = c("highcharter"), 
+               estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = Msj)) 
+```
+
+<br>
+
+### Información por sexo
+
+A continuación, las figuras @fig-F2MatPVPre y @fig-F3MatPVPre presentan, respectivamente, la evolución histórica y el comportamiento actual de matriculados por primera vez en pregrado según el sexo biológico.
+
+```{r}
+#| label: fig-F2MatPVPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(SEXO ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = MatriculadosPVPre,
+                    textNA = "Sin información") %>% 
+           Plot.Series(categoria = "SEXO", 
+              titulo = "Evolución del número de matriculados por primera vez en pregrado por sexo",
+              labelY = "Número de matriculados",
+              ylim = c(0,NaN),
+              libreria = c("highcharter"), 
+              estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = Msj))
+```
+
+<br>
+
+```{r}
+#| label: fig-F3MatPVPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(SEXO ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = MatriculadosPVPre,
+                    textNA = "Sin información") %>%
+        Plot.Torta(categoria  = "SEXO",
+           ano        = ano,
+           periodo    = semestre,
+           titulo     = "Distribución de matriculados por primera vez en pregrado por sexo",
+           addPeriodo = TRUE,
+           libreria   = "highcharter",
+           estilo     = list(hc.Tema = tema))
+```
+
+<br>
+
+### Información por edad
+
+A continuación, las figuras @fig-F4MatPVPre y @fig-F5MatPVPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de matriculados por primera vez en pregrado por grupos de edad.
+
+```{r}
+#| label: fig-F4MatPVPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(CAT_EDAD ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = MatriculadosPVPre,
+                    textNA = "Sin información") %>% 
+          Plot.Series(categoria = "CAT_EDAD", 
+              titulo = "Evolución del número de matriculados por primera vez en pregrado por grupos de edad",
+              labelY = "Número de matriculados",
+              ylim = c(0,NaN),
+              libreria = c("highcharter"), 
+              estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = Msj)) 
+```
+
+<br>
+
+```{r}
+#| label: fig-F5MatPVPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(CAT_EDAD ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = MatriculadosPVPre,
+                    textNA = "Sin información") %>% 
+         Plot.Barras(categoria  = "CAT_EDAD",
+            ano        = ano,
+            periodo    = semestre,
+            vertical   = TRUE,
+            ordinal    = TRUE,
+            libreria   = "highcharter",
+            titulo     = "Distribución de matriculados por primera vez en pregrado por grupos de edad",
+            labelEje   = "Número de matriculados",
+            addPeriodo = TRUE,
+            estilo = list(hc.Tema = tema, hc.Slider = FALSE))
+```
+
+<br>
+
+### Información por estrato socioeconómico
+
+A continuación, las figuras @fig-F6MatPVPre y @fig-F7MatPVPre presentan, respectivamente, la evolución histórica y el comportamiento actual de matriculados por primera vez en pregrado según el estrato socioeconómico de las viviendas en donde estos residen.
+
+```{r}
+#| label: fig-F6MatPVPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(ESTRATO ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = MatriculadosPVPre,
+                    textNA = "Sin información") %>% 
+           Plot.Series(categoria = "ESTRATO", 
+              titulo = "Evolúción del número de matriculados por primera vez en pregrado por estrato socioeconómico",
+              labelY = "Número de matriculados", 
+              ylim = c(0,NaN),
+              libreria = c("highcharter"), 
+              estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = Msj)) 
+```
+
+<br>
+
+```{r}
+#| label: fig-F7MatPVPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(ESTRATO ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = MatriculadosPVPre,
+                    textNA = "Sin información") %>% 
+        Plot.Torta(categoria  = "ESTRATO",
+           ano        = ano,
+           periodo    = semestre,
+           titulo     = "Distribución de matriculados por primera vez en pregrado por estrato socioeconómico",
+           addPeriodo = TRUE,
+           libreria   = "highcharter",
+           estilo     = list(hc.Tema = tema))
+```
+
+<br>
+
+### Información por tipo de admisión
+
+A continuación, las figuras @fig-F8MatPVPre y @fig-F9MatPVPre presentan, respectivamente, la evolución histórica y el comportamiento actual de matriculados por primera vez en pregrado según el tipo de admisión.
+
+```{r}
+#| label: fig-F8MatPVPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(TIPO_ADM ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = MatriculadosPVPre,
+                    textNA = "Sin información") %>% 
+           Plot.Series(categoria = "TIPO_ADM", 
+              titulo = "Evolúción del número de matriculados por primera vez en pregrado por tipo de admisión",
+              labelY = "Número de matriculados", 
+              ylim = c(0,NaN),
+              libreria = c("highcharter"), 
+              estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = Msj)) 
+```
+
+<br>
+
+```{r}
+#| label: fig-F9MatPVPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(TIPO_ADM ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = MatriculadosPVPre,
+                    textNA = "Sin información") %>% 
+        Plot.Torta(categoria  = "TIPO_ADM",
+           ano        = ano,
+           periodo    = semestre,
+           titulo     = "Distribución de matriculados por primera vez en pregrado por tipo de admisión",
+           addPeriodo = TRUE,
+           libreria   = "highcharter",
+           estilo     = list(hc.Tema = tema))
+```
+
+<br>
+
+### Información por facultad
+
+A continuación, las figuras @fig-F10MatPVPre y @fig-F11MatPVPre presentan, respectivamente, la evolución histórica y el comportamiento actual de matriculados por primera vez en pregrado por facultad.
+
+```{r}
+#| label: fig-F10MatPVPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(FACULTAD ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = MatriculadosPVPre,
+                    textNA = "Sin información") %>% 
+           Plot.Series(categoria = "FACULTAD", 
+              titulo = "Evolúción del número de matriculados por primera vez en pregrado por facultad",
+              labelY = "Número de matriculados", 
+              ylim = c(0,NaN),
+              libreria = c("highcharter"), 
+              estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = Msj)) 
+```
+
+<br>
+
+```{r}
+#| label: fig-F11MatPVPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(FACULTAD ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2008:ano), c(1:2)),
+                    intervalo = list(c(2008, 1), c(ano, semestre)),
+                    datos = MatriculadosPVPre,
+                    textNA = "Sin información") %>% 
+        Plot.Torta(categoria  = "FACULTAD",
+           ano        = ano,
+           periodo    = semestre,
+           titulo     = "Distribución de matriculados por primera vez en pregrado por facultad",
+           addPeriodo = TRUE,
+           libreria   = "highcharter",
+           estilo     = list(hc.Tema = tema))
+```
+
+<br>
+
+### Información por programa
+
+A continuación, las figuras @fig-F12MatPVPre y @fig-F13MatPVPre presentan, respectivamente, la evolución histórica y el comportamiento actual de matriculados por primera vez en pregrado por programa.
+
+```{r}
+#| label: fig-F12MatPVPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(PROGRAMA ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = MatriculadosPVPre,
+                    textNA = "Sin información") %>% 
+           Plot.Series(categoria = "PROGRAMA", 
+              titulo = "Evolúción del número de matriculados por primera vez en pregrado por programa",
+              labelY = "Número de matriculados", 
+              ylim = c(0,NaN),
+              libreria = c("highcharter"), 
+              estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = Msj)) 
+```
+
+<br>
+
+```{r}
+#| label: fig-F13MatPVPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(PROGRAMA ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = MatriculadosPVPre,
+                    textNA = "Sin información") %>% 
+        Plot.Barras(categoria  = "PROGRAMA",
+           ano        = ano,
+           periodo    = semestre,
+           vertical   = FALSE,
+           ordinal    = TRUE,
+           titulo     = "Distribución de matriculados por primera vez en pregrado por programa",
+           labelEje   = "Número de matriculados",
+           addPeriodo = TRUE,
+           libreria   = "highcharter",
+           estilo     = list(hc.Tema = tema, hc.Slider = FALSE))
+```
+
+<br>
+
+### Mapa departamentos y municipios de procedencia
+
+A continuación, la figura @fig-F14MatPVPre presenta el mapa actual (última convocatoria) con el total de matriculados por primera vez en pregrado por departamentos y municipios de procedencia en la **Sede Palmira**.
+
+```{r}
+#| label: fig-F14MatPVPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+MatriculadosPVPre %>% filter(YEAR == ano, SEMESTRE == semestre) %$%
+  Plot.Mapa(depto         = COD_DEP_PROC,
+            mpio          = COD_CIU_PROC,
+            estadistico   = "Conteo",
+            tipo          = "DeptoMpio",
+            titulo        = paste("Matriculados", etiqueta),
+            centroideMapa = "VALLE DEL CAUCA",
+            zoomMapa      = 6,
+            cortes        = list(Deptos = c(0, 10, 100, 300, Inf),
+                                 Mpios  = c(0, 1, 5, 10, 20, Inf)),
+            colores       = list(Deptos = c('#edf8e9','#bae4b3','#74c476','#006d2c'),
+                                 Mpios  = c('#ffffff',  '#5ec962', '#21918c', '#3b528b', '#fde725')),
+            showSedes     = TRUE
+  )
+```
+
+<br>
+
+### Admitidos VS Matriculados por primera vez
+
+```{r}
+#| label: fig-F15MatPVPre
+#| echo: false
+#| message: false
+#| warning: false
+#| eval: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+col <- c("#8cc63f", "#f15a24")
+
+#Corregir (cambiar eval = TRUE)
+AdmitidosPre <- AdmitidosPre %>%
+  mutate(MATRICULADO = ifelse(AdmitidosPre$ID == MatriculadosPVPre$ID, "Sí", "No"))
+
+Agregar(TOTAL ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2008:ano), c(1:2)),
+                    intervalo = list(c(2008, 1), c(ano, semestre)),
+                    datos = AdmitidosPre,
+                    textNA = "Sin información") %>% 
+        Plot.Series(categoria = "MATRICULADO", 
+              colores = col, 
+              titulo = "Evolución del número de admitidos matriculados a pregrado",
+              labelY = "Número de admitidos", 
+              libreria = c("highcharter"), 
+              estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = Msj)) 
+```
+
+### Tabla agregada 
+
+A continuación, la tabla @fig-F16MatPVPre presenta el agregado **histórico**, por **años, semestres, departamentos  y municipios de procedenecia, sexo, edad, estrato, tipo de admisión, facultad y programa** de los matriculados por primera vez en pregrado en la **Sede Palmira**.
+
+Los interesados en *imprimir*, *copiar* o *descargar* estas cifras, pueden hacerlo a través de las múltiples opciones que se ofrecen en la parte superior izquierda de la tabla que se presenta a continuación (Copiar, CSV, Excel, PDF e Imprimir). Así mismo, esta tabla, dada su naturaleza web, permiten filtrar los resultados por aquellas variables de interés.
+
+<br>
+
+```{r}
+#| label: fig-F16MatPVPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+MatPV_Pre_Tabla <- MatriculadosPVPre %>% group_by(YEAR, SEMESTRE, DEP_PROC, CIU_PROC, SEXO, CAT_EDAD, ESTRATO, MOD_ADM, FACULTAD, PROGRAMA) %>% summarise(Total=n()) %>% select(YEAR, SEMESTRE, DEP_PROC, CIU_PROC, SEXO, CAT_EDAD, ESTRATO, MOD_ADM, FACULTAD, PROGRAMA, Total) %>% ungroup() %>% mutate(across(where(is.character), replace_na,  replace = "SIN INFORMACIÓN")) 
+
+#Tabla en HTML
+UnalR::Tabla.General(datos = MatPV_Pre_Tabla,
+                     encabezado = "Tabla histórico total de matriculados por primera vez por variables de interés", 
+                     colorHead = "#4CFF49",
+                     colNames = c("Año","Semestre","Departamento de residencia","Ciudad de residencia","Sexo","Edad","Estrato","Modalidad de admisión","Facultad","Programa","Total"))
+
+```
+
+## Posgrado {#sec-MatPVPos}
+
+### Evolución histórica
+
+A continuación, la Figura @fig-F1MatPVPos, presenta la evolución histórica -*desde el periodo 2009*-, del total de matriculados por primera vez en posgrado en la sede.
+
+```{r}
+#| label: fig-F1MatPVPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Msj <- "Información disponible desde 2009-1"
+
+Agregar(TOTAL ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = MatriculadosPVPos,
+                    textNA = "Sin información") %>%  
+              Plot.Series(categoria = "TOTAL", 
+               colores = c("#8cc63f"), # verde, Total 
+               titulo = "Evolución histórica del número total de matriculados por primera vez en posgrado",
+               labelY = "Número de matriculados", 
+               ylim = c(0,NaN),
+               libreria = c("highcharter"), 
+               estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = Msj)) 
+```
+
+### Información por sexo
+
+A continuación, las figuras @fig-F2MatPVPos y @fig-F3MatPVPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de matriculados por primera vez en posgrado según el sexo biológico.
+
+```{r}
+#| label: fig-F2MatPVPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(SEXO ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = MatriculadosPVPos,
+                    textNA = "Sin información") %>% 
+           Plot.Series(categoria = "SEXO", 
+              titulo = "Evolución del número de matriculados por primera vez en posgrado por sexo",
+              labelY = "Número de matriculados", 
+              ylim = c(0,NaN),
+              libreria = c("highcharter"), 
+              estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = Msj))
+```
+<br>
+
+```{r}
+#| label: fig-F3MatPVPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(SEXO ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = MatriculadosPVPos,
+                    textNA = "Sin información") %>%
+        Plot.Torta(categoria  = "SEXO",
+           ano        = ano,
+           periodo    = semestre,
+           titulo     = "Distribución de matriculados por primera vez en posgrado por sexo",
+           addPeriodo = TRUE,
+           libreria   = "highcharter",
+           estilo     = list(hc.Tema = tema))
+
+```
+
+<br>
+
+### Información por edad
+
+A continuación, las figuras @fig-F4MatPVPos y @fig-F5MatPVPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de matriculados por primera vez en posgrado por grupos de edad.
+
+```{r}
+#| label: fig-F4MatPVPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(CAT_EDAD ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = MatriculadosPVPos,
+                    textNA = "Sin información") %>% 
+          Plot.Series(categoria = "CAT_EDAD", 
+              titulo = "Evolución del número de matriculados por primera vez en posgrado por grupos de edad",
+              labelY = "Número de matriculados", 
+              ylim = c(0,NaN),
+              libreria = c("highcharter"), 
+              estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = Msj)) 
+```
+
+<br>
+
+```{r}
+#| label: fig-F5MatPVPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(CAT_EDAD ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = MatriculadosPVPos,
+                    textNA = "Sin información") %>% 
+         Plot.Barras(categoria  = "CAT_EDAD",
+            ano        = ano,
+            periodo    = semestre,
+            vertical   = TRUE,
+            ordinal    = TRUE,
+            libreria   = "highcharter",
+            titulo     = "Distribución de matriculados por primera vez en posgrado por grupos de edad",
+            labelEje   = "Número de matriculados",
+            addPeriodo = TRUE,
+            estilo = list(hc.Tema = tema, hc.Slider = FALSE))
+```
+
+<br>
+
+### Información por estrato socioeconómico
+
+A continuación, las figuras @fig-F6MatPVPos y @fig-F7MatPVPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de matriculados por primera vez en posgrado según el estrato socioeconómico de las viviendas en donde estos residen.
+
+```{r}
+#| label: fig-F6MatPVPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+
+Agregar(ESTRATO ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2019:ano), c(1:2)),
+                    intervalo = list(c(2019, 2), c(ano, semestre)),
+                    datos = MatriculadosPVPos,
+                    textNA = "Sin información") %>% 
+           Plot.Series(categoria = "ESTRATO", 
+              titulo = "Evolúción del número de matriculados por primera vez en posgrado por estrato socioeconómico",
+              labelY = "Número de matriculados", 
+              ylim = c(0,NaN),
+              libreria = c("highcharter"), 
+              estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = "Información disponible desde 2019-2")) 
+```
+
+<br>
+
+```{r}
+#| label: fig-F7MatPVPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(ESTRATO ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = MatriculadosPVPos,
+                    textNA = "Sin información") %>% 
+        Plot.Torta(categoria  = "ESTRATO",
+           ano        = ano,
+           periodo    = semestre,
+           titulo     = "Distribución de matriculados por primera vez en posgrado por estrato socioeconómico",
+           addPeriodo = TRUE,
+           libreria   = "highcharter",
+           estilo     = list(hc.Tema = tema))
+```
+
+<br>
+
+### Información por facultad
+
+A continuación, las figuras @fig-F8MatPVPos y @fig-F9MatPVPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de matriculados por primera vez en posgrado por facultad.
+
+```{r}
+#| label: fig-F8MatPVPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(FACULTAD ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = MatriculadosPVPos,
+                    textNA = "Sin información") %>% 
+           Plot.Series(categoria = "FACULTAD", 
+              titulo = "Evolúción del número de matriculados por primera vez en posgrado por facultad",
+              labelY = "Número de matriculados", 
+              ylim = c(0,NaN),
+              libreria = c("highcharter"), 
+              estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = Msj)) 
+```
+
+<br>
+
+```{r}
+#| label: fig-F9MatPVPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(FACULTAD ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2008:ano), c(1:2)),
+                    intervalo = list(c(2008, 1), c(ano, semestre)),
+                    datos = MatriculadosPVPos,
+                    textNA = "Sin información") %>% 
+        Plot.Torta(categoria  = "FACULTAD",
+           ano        = ano,
+           periodo    = semestre,
+           titulo     = "Distribución de matriculados por primera vez en posgrado por facultad",
+           addPeriodo = TRUE,
+           libreria   = "highcharter",
+           estilo     = list(hc.Tema = tema))
+```
+
+<br>
+
+### Información por programa
+
+A continuación, las figuras @fig-F10MatPVPos y @fig-F11MatPVPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de matriculados por primera vez en posgrado por programa.
+
+```{r}
+#| label: fig-F10MatPVPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(PROGRAMA ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = MatriculadosPVPos,
+                    textNA = "Sin información") %>% 
+           Plot.Series(categoria = "PROGRAMA", 
+              titulo = "Evolúción del número de matriculados por primera vez en posgrado por programa",
+              labelY = "Número de matriculados", 
+              ylim = c(0,NaN),
+              libreria = c("highcharter"), 
+              estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = Msj)) 
+```
+
+<br>
+
+```{r}
+#| label: fig-F11MatPVPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(PROGRAMA ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = MatriculadosPVPos,
+                    textNA = "Sin información") %>% 
+        Plot.Barras(categoria  = "PROGRAMA",
+           ano        = ano,
+           periodo    = semestre,
+           vertical   = FALSE,
+           ordinal    = TRUE,
+           titulo     = "Distribución de matriculados por primera vez en posgrado por programa",
+           labelEje   = "Número de matriculados",
+           addPeriodo = TRUE,
+           libreria   = "highcharter",
+           estilo     = list(hc.Tema = tema, hc.Slider = FALSE))
+```
+
+<br>
+
+### Mapa departamentos y municipios de procedencia
+
+A continuación, la figura @fig-F12MatPVPre presenta el mapa actual (última convocatoria) con el total de matriculados por primera vez en posgrado por departamentos y municipios de procedencia en la **Sede Palmira**.
+
+```{r}
+#| label: fig-F12MatPVPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+MatriculadosPVPos %>% filter(YEAR == ano, SEMESTRE == semestre) %$%
+  Plot.Mapa(depto         = COD_DEP_PROC,
+            mpio          = COD_CIU_PROC,
+            estadistico   = "Conteo",
+            tipo          = "DeptoMpio",
+            titulo        = paste("Matriculados", etiqueta),
+            centroideMapa = "VALLE DEL CAUCA",
+            zoomMapa      = 6,
+            cortes        = list(Deptos = c(0, 10, 100, 300, Inf),
+                                 Mpios  = c(0, 1, 5, 10, 20, Inf)),
+            colores       = list(Deptos = c('#edf8e9','#bae4b3','#74c476','#006d2c'),
+                                 Mpios  = c('#ffffff',  '#5ec962', '#21918c', '#3b528b', '#fde725')),
+            showSedes     = TRUE
+  )
+```
+
+<br>
+
+### Admitidos VS Matriculados por primera vez
+
+### Tabla agregada 
+
+A continuación, la tabla @fig-F14MatPVPos presenta el agregado **histórico**, por **años, semestres, departamentos  y municipios de procedenecia, sexo, edad, estrato, facultad y programa** de los matriculados por primera vez en posgrado en la **Sede Palmira**.
+
+Los interesados en *imprimir*, *copiar* o *descargar* estas cifras, pueden hacerlo a través de las múltiples opciones que se ofrecen en la parte superior izquierda de la tabla que se presenta a continuación (Copiar, CSV, Excel, PDF e Imprimir). Así mismo, esta tabla, dada su naturaleza web, permiten filtrar los resultados por aquellas variables de interés.
+
+<br>
+
+```{r}
+#| label: fig-F14MatPVPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+MatPV_Pos_Tabla <- MatriculadosPVPos %>% group_by(YEAR, SEMESTRE, DEP_PROC, CIU_PROC, SEXO, CAT_EDAD, ESTRATO, FACULTAD, PROGRAMA) %>% summarise(Total=n()) %>% select(YEAR, SEMESTRE, DEP_PROC, CIU_PROC, SEXO, CAT_EDAD, ESTRATO, FACULTAD, PROGRAMA, Total) %>% ungroup() %>% mutate(across(where(is.character), replace_na,  replace = "SIN INFORMACIÓN")) 
+
+#Tabla en HTML
+UnalR::Tabla.General(datos = MatPV_Pos_Tabla,
+                     encabezado = "Tabla histórico total de matriculados por primera vez por variables de interés", 
+                     colorHead = "#4CFF49",
+                     colNames = c("Año","Semestre","Departamento de residencia","Ciudad de residencia","Sexo","Edad","Estrato","Facultad","Programa","Total"))
+
+```
+
+

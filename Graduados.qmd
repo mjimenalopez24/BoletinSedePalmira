@@ -1,0 +1,793 @@
+---
+crossref:
+  chapters: true
+  fig-title: 'Figura' 
+  tbl-title: 'Tabla'     
+  title-delim: '.'     
+  fig-prefix: 'Figura'  
+  tbl-prefix: 'Tabla'
+---
+
+# Graduados {#sec-Grad}
+
+<!-- CARGAR BASE DE GRADUADOS -->
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+# librerías requeridas
+library(UnalData)
+library(UnalR)
+library(tidyverse)
+library(magrittr)
+
+# Base de datos de aspirantes a la Sede Palmira
+
+Graduados <- UnalData::Graduados %>% select(-PROGRAMA) %>%
+  filter(SEDE_NOMBRE_MAT %in% c('Palmira')) %>%
+  left_join(select(UnalData::Hprogramas,SNIES_PROGRA,COD_PADRE,PROGRAMA), by= "SNIES_PROGRA") %>%
+  mutate(TOTAL = "Total")
+
+Agregado <- Graduados %>% group_by(YEAR, SEMESTRE) %>% count()
+ano <- max(Agregado %>% select(YEAR))
+semestre <- Agregado[[nrow(Agregado), "SEMESTRE"]]
+etiqueta <- paste0(" ", ano, "-", semestre)
+
+# Bases por nivel de formación
+GraduadosPre <- Graduados %>% filter(TIPO_NIVEL == "Pregrado") %>%
+  mutate(CAT_EDAD = case_when(EDAD_MOD <= 23 ~ '23 años o menos',
+                              EDAD_MOD >= 24 & EDAD_MOD <= 25 ~ '24 a 25 años',
+                              EDAD_MOD >= 26 ~ '26 años o más',
+                              is.na(EDAD_MOD) ~ 'Sin información'))
+
+GraduadosPos <- Graduados %>% filter(TIPO_NIVEL == "Postgrado", MOD_ADM == "Regular") %>%
+  mutate(CAT_EDAD = case_when(EDAD_MOD <= 25 ~ '25 años o menos',
+                              EDAD_MOD >= 26 & EDAD_MOD <= 30 ~ '26 a 30 años',
+                              EDAD_MOD >= 31 & EDAD_MOD <= 35 ~ '31 a 35 años',
+                              EDAD_MOD >= 36 ~ '36 años o más',
+                              is.na(EDAD_MOD) ~ 'Sin información'))
+tema <- 5
+```
+
+Este capítulo presenta el consolidado de las principales características asociadas a la información estadística oficial de los graduados de pregrado y postgrado en la **Sede Palmira** de la Universidad Nacional de Colombia. A continuación, se presenta una breve descripción de las secciones que hacen parte de este capítulo. 
+
+
+<h3>**Secciones**</h3> 
+
+
+* [Graduados de pregrado -@sec-GradPre]: contiene la información oficial del total de graduados de pregrado en la **Sede Palmira** de la Universidad Nacional de Colombia.
+
+* [Graduados de postgrado -@sec-GradPos]: contiene la información oficial del total de graduados de los programas de postgrado de la **Sede Palmira** de la Universidad Nacional de Colombia.
+
+<h3>**Metadatos**</h3>
+
+La construcción de las cifras oficiales de graduados de la **Sede Palmira**, las definiciones que hacen parte de estas, así como las codificaciones y clasificaciones aquí empleadas se encuentran contenidas en la sección **Graduados** del capítulo de *Metadatos* de las cifras oficiales generales que hacen parte de la página de [estadísticas](http://estadisticas.unal.edu.co/home/) de la Universidad Nacional de Colombia. Invitamos a los lectores a explorar y conocer estos metadatos los cuales, además de orientar y facilitar el entendimiento de la información acá expuesta, se encuentran disponibles en el siguiente enlace.
+
+* [Metadatos Cifras Oficiales Universidad Nacional de Colombia](http://estadisticas.unal.edu.co/menu-principal/cifras-generales/metadatos/cifras-generales/)
+
+
+## Pregrado {#sec-GradPre}
+
+### Evolución histórica
+
+A continuación, la Figura @fig-F1GraPre, presenta la evolución histórica -*desde el periodo 2009*-, del total de graduados de pregrado en la sede.
+
+```{r}
+#| label: fig-F1GraPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Msj <- "Información disponible desde 2009-1"
+
+Agregar(TOTAL ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = GraduadosPre,
+                    textNA = "Sin información") %>%  
+              Plot.Series(categoria = "TOTAL", 
+               colores = c("#8cc63f"), # verde, Total 
+               titulo = "Evolución histórica del número total de graduados de pregrado", 
+               labelY = "Número de graduados", 
+               ylim = c(0,NaN),
+               libreria = c("highcharter"), 
+               estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = Msj)) 
+```
+
+<br>
+
+### Información por sexo
+
+A continuación, las figuras @fig-F2GraPre y @fig-F3GraPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de graduados de pregrado según el sexo biológico.
+
+```{r}
+#| label: fig-F2GraPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(SEXO ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = GraduadosPre,
+                    textNA = "Sin información") %>% 
+           Plot.Series(categoria = "SEXO", 
+              titulo = "Evolución del número de graduados a pregrado por sexo",
+              labelY = "Número de graduados", 
+              ylim = c(0,NaN),
+              libreria = c("highcharter"), 
+              estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = Msj))
+```
+
+<br>
+
+```{r}
+#| label: fig-F3GraPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(SEXO ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = GraduadosPre,
+                    textNA = "Sin información") %>%
+        Plot.Torta(categoria  = "SEXO",
+           ano        = ano,
+           periodo    = semestre,
+           titulo     = "Distribución de graduados de pregrado por sexo",
+           addPeriodo = TRUE,
+           libreria   = "highcharter",
+           estilo     = list(hc.Tema = tema))
+
+```
+
+<br>
+
+### Información por edad
+
+A continuación, las figuras @fig-F4GraPre y @fig-F5GraPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de graduados de pregrado por grupos de edad.
+
+```{r}
+#| label: fig-F4GraPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(CAT_EDAD ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2010:ano), c(1:2)),
+                    intervalo = list(c(2010, 1), c(ano, semestre)),
+                    datos = GraduadosPre,
+                    textNA = "Sin información") %>% 
+          Plot.Series(categoria = "CAT_EDAD", 
+              titulo = "Evolución del número de graduados de pregrado por grupos de edad",
+              labelY = "Número de graduados", 
+              ylim = c(0,NaN),
+              libreria = c("highcharter"), 
+              estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = "Información disponible desde 2010-1")) 
+```
+
+<br>
+
+```{r}
+#| label: fig-F5GraPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(CAT_EDAD ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = GraduadosPre,
+                    textNA = "Sin información") %>% 
+         Plot.Barras(categoria  = "CAT_EDAD",
+            ano        = ano,
+            periodo    = semestre,
+            vertical   = TRUE,
+            ordinal    = TRUE,
+            libreria   = "highcharter",
+            titulo     = "Distribución de graduados de pregrado por grupos de edad",
+            labelEje   = "Número de graduados",
+            addPeriodo = TRUE,
+            estilo = list(hc.Tema = tema, hc.Slider = FALSE)
+             )
+```
+
+<br>
+
+### Información por facultad
+
+A continuación, las figuras @fig-F6GraPre y @fig-F7GraPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de graduados de pregrado por facultad.
+
+```{r}
+#| label: fig-F6GraPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(FACULTAD ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = GraduadosPre,
+                    textNA = "Sin información") %>% 
+           Plot.Series(categoria = "FACULTAD", 
+              titulo = "Evolúción del número de graduados de pregrado por facultad",
+              labelY = "Número de graduados", 
+              ylim = c(0,NaN),
+              libreria = c("highcharter"), 
+              estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = Msj)) 
+```
+
+<br>
+
+```{r}
+#| label: fig-F7GraPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(FACULTAD ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = GraduadosPre,
+                    textNA = "Sin información") %>% 
+        Plot.Torta(categoria  = "FACULTAD",
+           ano        = ano,
+           periodo    = semestre,
+           titulo     = "Distribución de graduados de pregrado por facultad",
+           addPeriodo = TRUE,
+           libreria   = "highcharter",
+           estilo     = list(hc.Tema = tema))
+```
+
+<br>
+
+### Información por programa
+
+A continuación, las figuras @fig-F8GraPre y @fig-F9GraPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de graduados de pregrado por programa.
+
+```{r}
+#| label: fig-F8GraPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(PROGRAMA ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = GraduadosPre,
+                    textNA = "Sin información") %>% 
+           Plot.Series(categoria = "PROGRAMA", 
+              titulo = "Evolúción del número de graduados de pregrado por programa",
+              labelY = "Número de graduados", 
+              ylim = c(0,NaN),
+              libreria = c("highcharter"), 
+              estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = Msj)) 
+```
+
+<br>
+
+```{r}
+#| label: fig-F9GraPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(PROGRAMA ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = GraduadosPre,
+                    textNA = "Sin información") %>% 
+         Plot.Barras(categoria  = "PROGRAMA",
+            ano        = ano,
+            periodo    = semestre,
+            vertical   = FALSE,
+            ordinal    = TRUE,
+            libreria   = "highcharter",
+            titulo     = "Distribución de graduados de pregrado por programa",
+            labelEje   = "Número de graduados",
+            addPeriodo = TRUE,
+            estilo = list(hc.Tema = tema, hc.Slider = FALSE)
+             )
+```
+
+<br>
+
+### Información por área de conocimiento
+
+A continuación, las figuras @fig-F10GraPre y @fig-F11GraPre presentan, respectivamente, la evolución histórica y el comportamiento actual del total de graduados de pregrado por área de conocimiento SNIES.
+
+```{r}
+#| label: fig-F10GraPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(AREAC_SNIES ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = GraduadosPre,
+                    textNA = "Sin información") %>% 
+           Plot.Series(categoria = "AREAC_SNIES", 
+              titulo = "Evolúción del número de graduados de pregrado por área de conocimiento",
+              labelY = "Número de graduados", 
+              ylim = c(0,NaN),
+              libreria = c("highcharter"), 
+              estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = Msj)) 
+```
+
+<br>
+
+```{r}
+#| label: fig-F11GraPre
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(AREAC_SNIES ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = GraduadosPre,
+                    textNA = "Sin información") %>% 
+         Plot.Barras(categoria  = "AREAC_SNIES",
+            ano        = ano,
+            periodo    = semestre,
+            vertical   = TRUE,
+            ordinal    = TRUE,
+            libreria   = "highcharter",
+            titulo     = "Distribución de graduados de pregrado por área de conocimiento",
+            labelEje   = "Número de graduados",
+            addPeriodo = TRUE,
+            estilo = list(hc.Tema = tema, hc.Slider = FALSE)
+             )
+```
+
+<br>
+
+### Tiempo de permanencia
+
+#### Sede Palmira
+
+#### Facultad de ciencias agropecuarias
+
+#### Facultad de ingeniería y administración
+
+### Tabla agregada 
+
+A continuación, la tabla @fig-FGraPreTabla presenta el agregado **histórico**, por **años, semestres, sexo, edad, facultad, programa, área de conocimiento** de los graduados de pregrado en la **Sede Palmira**.
+
+Los interesados en *imprimir*, *copiar* o *descargar* estas cifras, pueden hacerlo a través de las múltiples opciones que se ofrecen en la parte superior izquierda de la tabla que se presenta a continuación (Copiar, CSV, Excel, PDF e Imprimir). Así mismo, esta tabla, dada su naturaleza web, permiten filtrar los resultados por aquellas variables de interés.
+
+<br>
+
+```{r}
+#| label: fig-FGraPreTabla
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Gra_Pre_Tabla <- GraduadosPre %>% group_by(YEAR, SEMESTRE, SEXO, CAT_EDAD, FACULTAD, PROGRAMA, AREAC_SNIES) %>% summarise(Total=n()) %>% select(YEAR, SEMESTRE, SEXO, CAT_EDAD, FACULTAD, PROGRAMA, AREAC_SNIES, Total) %>% ungroup() %>% mutate(across(where(is.character), replace_na,  replace = "SIN INFORMACIÓN")) 
+
+#Tabla en HTML
+UnalR::Tabla.General(datos = Gra_Pre_Tabla,
+                     encabezado = "Tabla histórico total de graduados por variables de interés",
+                     colorHead = "#4CFF49",
+                     colNames = c("Año","Semestre","Sexo","Edad","Facultad","Programa","Área de conocimiento SNIES","Total"))
+
+```
+
+<br>
+
+## Posgrado {#sec-GradPos}
+
+### Evolución histórica
+
+A continuación, la Figura @fig-F1GraPos, presenta la evolución histórica -*desde el periodo 2009*-, del total de graduados de posgrado en la sede.
+
+```{r}
+#| label: fig-F1GraPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Msj <- "Información disponible desde 2009-1"
+
+Agregar(TOTAL ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = GraduadosPos,
+                    textNA = "Sin información") %>%  
+              Plot.Series(categoria = "TOTAL", 
+               colores = c("#8cc63f"), # verde, Total 
+               titulo = "Evolución histórica del número total de graduados de posgrado", 
+               labelY = "Número de graduados", 
+               ylim = c(0,NaN),
+               libreria = c("highcharter"), 
+               estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = Msj)) 
+```
+
+<br>
+
+### Información por sexo
+
+A continuación, las figuras @fig-F2GraPos y @fig-F3GraPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de graduados de posgrado según el sexo biológico.
+
+```{r}
+#| label: fig-F2GraPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(SEXO ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = GraduadosPos,
+                    textNA = "Sin información") %>% 
+           Plot.Series(categoria = "SEXO", 
+              titulo = "Evolución del número de graduados a posgrado por sexo",
+              labelY = "Número de graduados", 
+              ylim = c(0,NaN),
+              libreria = c("highcharter"), 
+              estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = Msj))
+```
+
+<br>
+
+```{r}
+#| label: fig-F3GraPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(SEXO ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = GraduadosPos,
+                    textNA = "Sin información") %>%
+        Plot.Torta(categoria  = "SEXO",
+           ano        = ano,
+           periodo    = semestre,
+           titulo     = "Distribución de graduados de posgrado por sexo",
+           addPeriodo = TRUE,
+           libreria   = "highcharter",
+           estilo     = list(hc.Tema = tema))
+
+```
+
+<br>
+
+### Información por edad
+
+A continuación, las figuras @fig-F4GraPos y @fig-F5GraPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de graduados de posgrado por grupos de edad.
+
+```{r}
+#| label: fig-F4GraPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(CAT_EDAD ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = GraduadosPos,
+                    textNA = "Sin información") %>% 
+          Plot.Series(categoria = "CAT_EDAD", 
+              titulo = "Evolución del número de graduados de posgrado por grupos de edad",
+              labelY = "Número de graduados", 
+              ylim = c(0,NaN),
+              libreria = c("highcharter"), 
+              estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = Msj)) 
+```
+
+<br>
+
+```{r}
+#| label: fig-F5GraPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(CAT_EDAD ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = GraduadosPos,
+                    textNA = "Sin información") %>% 
+         Plot.Barras(categoria  = "CAT_EDAD",
+            ano        = ano,
+            periodo    = semestre,
+            vertical   = TRUE,
+            ordinal    = TRUE,
+            libreria   = "highcharter",
+            titulo     = "Distribución de graduados de posgrado por grupos de edad",
+            labelEje   = "Número de graduados",
+            addPeriodo = TRUE,
+            estilo = list(hc.Tema = tema, hc.Slider = FALSE)
+             )
+```
+
+<br>
+
+### Información por facultad
+
+A continuación, las figuras @fig-F6GraPos y @fig-F7GraPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de graduados de posgrado por facultad.
+
+```{r}
+#| label: fig-F6GraPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(FACULTAD ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = GraduadosPos,
+                    textNA = "Sin información") %>% 
+           Plot.Series(categoria = "FACULTAD", 
+              titulo = "Evolúción del número de graduados de posgrado por facultad",
+              labelY = "Número de graduados", 
+              ylim = c(0,NaN),
+              libreria = c("highcharter"), 
+              estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = Msj)) 
+```
+
+<br>
+
+```{r}
+#| label: fig-F7GraPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(FACULTAD ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = GraduadosPos,
+                    textNA = "Sin información") %>% 
+        Plot.Torta(categoria  = "FACULTAD",
+           ano        = ano,
+           periodo    = semestre,
+           titulo     = "Distribución de graduados de posgrado por facultad",
+           addPeriodo = TRUE,
+           libreria   = "highcharter",
+           estilo     = list(hc.Tema = tema))
+```
+
+<br>
+
+### Información por programa
+
+A continuación, las figuras @fig-F8GraPos y @fig-F9GraPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de graduados de posgrado por programa.
+
+```{r}
+#| label: fig-F8GraPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(PROGRAMA ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = GraduadosPos,
+                    textNA = "Sin información") %>% 
+           Plot.Series(categoria = "PROGRAMA", 
+              titulo = "Evolúción del número de graduados de posgrado por programa",
+              labelY = "Número de graduados", 
+              ylim = c(0,NaN),
+              libreria = c("highcharter"), 
+              estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = Msj)) 
+```
+
+<br>
+
+```{r}
+#| label: fig-F9GraPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(PROGRAMA ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = GraduadosPos,
+                    textNA = "Sin información") %>% 
+        Plot.Barras(categoria  = "PROGRAMA",
+           ano        = ano,
+           periodo    = semestre,
+           vertical   = FALSE,
+           ordinal    = TRUE,
+           titulo     = "Distribución de graduados de posgrado por programa",
+           labelEje   = "Número de graduados",
+           addPeriodo = TRUE,
+           libreria   = "highcharter",
+           estilo     = list(hc.Tema = tema, hc.Slider = FALSE))
+```
+
+<br>
+
+### Información por área de conocimiento
+
+A continuación, las figuras @fig-F10GraPos y @fig-F11GraPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de graduados de posgrado por área de conocimiento SNIES.
+
+```{r}
+#| label: fig-F10GraPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(AREAC_SNIES ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = GraduadosPos,
+                    textNA = "Sin información") %>% 
+           Plot.Series(categoria = "AREAC_SNIES", 
+              titulo = "Evolúción del número de graduados de posgrado por área de conocimiento",
+              labelY = "Número de graduados", 
+              ylim = c(0,NaN),
+              libreria = c("highcharter"), 
+              estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = Msj)) 
+```
+
+<br>
+
+```{r}
+#| label: fig-F11GraPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(AREAC_SNIES ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = GraduadosPos,
+                    textNA = "Sin información") %>% 
+         Plot.Barras(categoria  = "AREAC_SNIES",
+            ano        = ano,
+            periodo    = semestre,
+            vertical   = TRUE,
+            ordinal    = TRUE,
+            libreria   = "highcharter",
+            titulo     = "Distribución de graduados de posgrado por área de conocimiento",
+            labelEje   = "Número de graduados",
+            addPeriodo = TRUE,
+            estilo = list(hc.Tema = tema, hc.Slider = FALSE)
+             )
+```
+
+<br>
+
+### Información por nivel de formación
+
+A continuación, las figuras @fig-F12GraPos y @fig-F13GraPos presentan, respectivamente, la evolución histórica y el comportamiento actual del total de graduados de posgrado por nivel de formación.
+
+```{r}
+#| label: fig-F12GraPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(NIVEL ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = GraduadosPos,
+                    textNA = "Sin información") %>% 
+           Plot.Series(categoria = "NIVEL", 
+              titulo = "Evolúción del número de graduados de posgrado por nivel de formación",
+              labelY = "Número de graduados", 
+              ylim = c(0,NaN),
+              libreria = c("highcharter"), 
+              estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = Msj)) 
+```
+
+<br>
+
+```{r}
+#| label: fig-F13GraPos
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Agregar(NIVEL ~ YEAR + SEMESTRE, 
+                    frecuencia = list(c(2009:ano), c(1:2)),
+                    intervalo = list(c(2009, 1), c(ano, semestre)),
+                    datos = GraduadosPos,
+                    textNA = "Sin información") %>% 
+        Plot.Torta(categoria  = "NIVEL",
+           ano        = ano,
+           periodo    = semestre,
+           titulo     = "Distribución de graduados de posgrado por nivel de formación",
+           addPeriodo = TRUE,
+           libreria   = "highcharter",
+           estilo     = list(hc.Tema = tema))
+```
+
+<br>
+
+### Tiempo de permanencia
+
+#### Sede Palmira
+
+#### Facultad de ciencias agropecuarias
+
+#### Facultad de ingeniería y administración
+
+### Tabla agregada 
+
+A continuación, la tabla @fig-FGraPosTabla presenta el agregado **histórico**, por **años, semestres, sexo, edad, facultad, programa, área de conocimiento, nivel de formación** de los graduados de posgrado en la **Sede Palmira**.
+
+Los interesados en *imprimir*, *copiar* o *descargar* estas cifras, pueden hacerlo a través de las múltiples opciones que se ofrecen en la parte superior izquierda de la tabla que se presenta a continuación (Copiar, CSV, Excel, PDF e Imprimir). Así mismo, esta tabla, dada su naturaleza web, permiten filtrar los resultados por aquellas variables de interés.
+
+<br>
+
+```{r}
+#| label: fig-FGraPosTabla
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-cap: >
+#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+
+Gra_Pos_Tabla <- GraduadosPos %>% group_by(YEAR, SEMESTRE, SEXO, CAT_EDAD, FACULTAD, PROGRAMA, AREAC_SNIES, NIVEL) %>% summarise(Total=n()) %>% select(YEAR, SEMESTRE, SEXO, CAT_EDAD, FACULTAD, PROGRAMA, AREAC_SNIES, NIVEL, Total) %>% ungroup() %>% mutate(across(where(is.character), replace_na,  replace = "SIN INFORMACIÓN")) 
+
+#Tabla en HTML
+UnalR::Tabla.General(datos = Gra_Pos_Tabla,
+                     encabezado = "Tabla histórico total de graduados por variables de interés",
+                     colorHead = "#4CFF49",
+                     colNames = c("Año","Semestre","Sexo","Edad","Facultad","Programa","Área de conocimiento SNIES","Nivel","Total"))
+
+```
+
+
+
+

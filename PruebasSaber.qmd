@@ -1,3 +1,13 @@
+---
+crossref:
+  chapters: true
+  fig-title: 'Figura' 
+  tbl-title: 'Tabla'     
+  title-delim: '.'     
+  fig-prefix: 'Figura'  
+  tbl-prefix: 'Tabla'
+---
+
 # Pruebas Saber Pro {#sec-PruebasSaber}
 
 <!-- CARGAR BASES DE PRUEBA SABER PRO -->
@@ -44,12 +54,12 @@ Este capítulo presenta el consolidado de los resultados obtenidos en las Prueba
 <h3>**Secciones**</h3> 
 
 
-* [Puntaje global](#PuntGlobal): contiene la información oficial del puntaje global obtenido en prueba en la **Sede Palmira** de la Universidad Nacional de Colombia.
+* [Puntaje global -@sec-PuntGlobal]: contiene la información oficial del puntaje global obtenido en prueba en la **Sede Palmira** de la Universidad Nacional de Colombia.
 
-* [Puntaje por componentes](#PuntComp): contiene la información oficial del puntaje para cada uno de los componentes: [Razonamiento cuantitativo](#RazoCuant), [Inglés](#Ingles), [Lectura crítica](#Lectura), [Competencias ciudadanas](#CompCiu), [Cominucación escrita](#ComuEsc) en la **Sede Palmira** de la Universidad Nacional de Colombia. Además de la [comparación](#Comparacion) de dichos componentes por variables de interés.
+* [Puntaje por componentes -@sec-PuntComp]: contiene la información oficial del puntaje para cada uno de los componentes: [Razonamiento cuantitativo -@sec-RazoCuant], [Inglés -@sec-Ingles], [Lectura crítica -@sec-Lectura], [Competencias ciudadanas -@sec-CompCiu], [Comunicación escrita -@sec-ComuEsc] en la **Sede Palmira** de la Universidad Nacional de Colombia. Además de la [comparación -@sec-Comparacion] de dichos componentes por variables de interés.
 
 
-## Puntaje global {#PuntGlobal}
+## Puntaje global {#sec-PuntGlobal}
 
 ### Evolución histórica del puntaje promedio global
 
@@ -165,7 +175,8 @@ Plot.Boxplot(
 #| message: false
 #| warning: false
 #| tbl-cap: >
-#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+#|    'Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'
+#| tbl-cap-location: 'margin'
 
 TABLA_PUNT_GLOBAL1 <- SaberPro %>%
   select(YEAR, SEXO, PUNTAJE_GLOBAL) %>% 
@@ -247,8 +258,8 @@ Plot.Boxplot(
 #| echo: false
 #| message: false
 #| warning: false
-#| fig-cap: >
-#|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
+#| tbl-cap: 'Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones'
+#| tbl-cap-location: 'margin'
 
 TABLA_PUNT_GLOBAL2 <- SaberPro %>% 
   select(YEAR, CAT_EDAD, PUNTAJE_GLOBAL) %>%
@@ -380,6 +391,7 @@ Plot.Boxplot(
 ```
 
 <br>
+
 ```{r}
 #| label: fig-F12Saber
 #| echo: false
@@ -720,6 +732,8 @@ Tabla.General(
 )
 ```
 
+<br>
+
 ### Información por área del conocimiento
 
 A continuación, las figuras @fig-F25Saber y @fig-F26Saber presentan, respectivamente, la evolución histórica del puntaje global -*por año*-, y el comportamiento actual del puntaje promedio global y por componentes según el área del conocimiento SNIES.
@@ -796,7 +810,7 @@ Tabla.General(
 
 <br>
 
-## Puntaje por componentes
+## Puntaje por componentes {#sec-PuntComp}
 
 ### Evolución histórica del puntaje por componentes
 
@@ -824,7 +838,9 @@ Plot.Boxplot(
 )
 ```
 
-### Comparción del puntaje por componentes según la variable de interés {#Comparacion}
+<br>
+
+### Comparción del puntaje por componentes según la variable de interés {#sec-Comparacion}
 
 A continuación, las Figuras @fig-F29Saber, @fig-F30Saber, @fig-F31Saber, @fig-F32Saber, @fig-F33Saber, @fig-F34Saber, @fig-F35Saber y @fig-F36Saber, presentan el comportamiento del puntaje por componentes según la variable de interés para el último año registrado.
 
@@ -852,6 +868,8 @@ Plot.Boxplot(
 )
 ```
 
+<br>
+
 #### Edad
 
 ```{r}
@@ -875,6 +893,8 @@ Plot.Boxplot(
   estilo   = list(LegendTitle = "Componente:", hc.Tema = tema)
 )
 ```
+
+<br>
 
 #### Tipo de colegio
 
@@ -900,6 +920,8 @@ Plot.Boxplot(
 )
 ```
 
+<br>
+
 #### Modalidad de admisión
 
 ```{r}
@@ -923,6 +945,8 @@ Plot.Boxplot(
   estilo   = list(LegendTitle = "Componente:", hc.Tema = tema)
 )
 ```
+
+<br>
 
 #### Estrato
 
@@ -948,6 +972,8 @@ Plot.Boxplot(
 )
 ```
 
+<br>
+
 #### PBM
 
 ```{r}
@@ -971,6 +997,8 @@ Plot.Boxplot(
   estilo   = list(LegendTitle = "Componente:", hc.Tema = tema)
 )
 ```
+
+<br>
 
 #### Nacionalidad
 
@@ -996,6 +1024,8 @@ Plot.Boxplot(
 )
 ```
 
+<br>
+
 #### Área del conocimiento SNIES
 
 ```{r}
@@ -1020,7 +1050,9 @@ Plot.Boxplot(
 )
 ```
 
-### Razonamiento cuantitativo {#RazoCuant}
+<br>
+
+### Razonamiento cuantitativo {#sec-RazoCuant}
 
 #### Evolución histórica del puntaje de razonamiento cuantitativo
 
@@ -1466,6 +1498,8 @@ Tabla.General(
 )
 ```
 
+<br>
+
 #### Información por área del conocimiento
 
 A continuación, la figura @fig-F25SaberRC presenta, respectivamente, la evolución histórica del puntaje de razonamiento cuantitativo -*por año*- según el área de conocimiento SNIES.
@@ -1513,7 +1547,9 @@ Tabla.General(
 )
 ```
 
-### Inglés {#Ingles}
+<br>
+
+### Inglés {#sec-Ingles}
 
 #### Evolución histórica del puntaje de inglés
 
@@ -1909,6 +1945,8 @@ Tabla.General(
 )
 ```
 
+<br>
+
 #### Información por departamentos y municipios de procedencia
 
 A continuación, la figura @fig-F23SaberIng presenta el mapa actual (último registro) con el puntaje promedio de inglés por departamentos y municipios de procedencia en la **Sede Palmira**.
@@ -1959,6 +1997,8 @@ Tabla.General(
 )
 ```
 
+<br>
+
 #### Información por área del conocimiento
 
 A continuación, la figura @fig-F25SaberIng presenta, respectivamente, la evolución histórica del puntaje de inglés -*por año*- según el área de conocimiento SNIES.
@@ -2006,7 +2046,9 @@ Tabla.General(
 )
 ```
 
-### Lectura crítica {#Lectura}
+<br>
+
+### Lectura crítica {#sec-Lectura}
 
 #### Evolución histórica del puntaje de razonamiento cuantitativo
 
@@ -2401,6 +2443,8 @@ Tabla.General(
 )
 ```
 
+<br>
+
 #### Información por departamentos y municipios de procedencia
 
 A continuación, la figura @fig-F23SaberLC presenta el mapa actual (último registro) con el puntaje promedio de lectura crítica por departamentos y municipios de procedencia en la **Sede Palmira**.
@@ -2451,6 +2495,8 @@ UnalR::Tabla.General(
 )
 ```
 
+<br>
+
 #### Información por área del conocimiento
 
 A continuación, la figura @fig-F25SaberLC presenta, respectivamente, la evolución histórica del puntaje de lectura crítica -*por año*- según el área de conocimiento SNIES.
@@ -2498,7 +2544,9 @@ Tabla.General(
 )
 ```
 
-### Competencias ciudadanas {#CompCiu}
+<br>
+
+### Competencias ciudadanas {#sec-CompCiu}
 
 #### Evolución histórica del puntaje de razonamiento cuantitativo
 
@@ -2894,6 +2942,8 @@ Tabla.General(
 )
 ```
 
+<br>
+
 #### Información por departamentos y municipios de procedencia
 
 A continuación, la figura @fig-F23SaberCC presenta el mapa actual (último registro) con el puntaje promedio de competencias ciudadanas por departamentos y municipios de procedencia en la **Sede Palmira**.
@@ -2944,6 +2994,8 @@ Tabla.General(
 )
 ```
 
+<br>
+
 #### Información por área del conocimiento
 
 A continuación, la figura @fig-F25SaberCC presenta, respectivamente, la evolución histórica del puntaje de competencias ciudadanas -*por año*- según el área de conocimiento SNIES.
@@ -2991,7 +3043,9 @@ Tabla.General(
 )
 ```
 
-### Comunicación escrita {#ComuEsc}
+<br>
+
+### Comunicación escrita {#sec-ComuEsc}
 
 #### Evolución histórica del puntaje de razonamiento cuantitativo
 
@@ -3385,6 +3439,8 @@ Tabla.General(
 )
 ```
 
+<br>
+
 #### Información por departamentos y municipios de procedencia
 
 A continuación, la figura @fig-F23SaberCE presenta el mapa actual (último registro) con el puntaje promedio de comunicación escrita por departamentos y municipios de procedencia en la **Sede Palmira**.
@@ -3435,6 +3491,8 @@ Tabla.General(
 )
 ```
 
+<br>
+
 #### Información por área del conocimiento
 
 A continuación, la figura @fig-F25SaberCE presenta, respectivamente, la evolución histórica del puntaje de comunicación escrita -*por año*- según el área de conocimiento SNIES.
@@ -3444,7 +3502,7 @@ A continuación, la figura @fig-F25SaberCE presenta, respectivamente, la evoluci
 #| echo: false 
 #| message: false 
 #| warning: false 
-#| fig-cap: > 
+#| fig-cap: >
 #|    Fuente: Dirección Nacional de Planeación y Estadística con base en información de la Dirección Nacional de Admisiones
 
 Plot.Boxplot(
@@ -3482,9 +3540,11 @@ Tabla.General(
 )
 ```
 
+<br>
+
 ### Tabla agregada
 
-A continuación, la tabla @tbl-FTablaSaber presenta los datos por **año, sexo, rango de edad, tipo de colegio, modalidad de admisión, estrato, Puntaje Básico de Matricula (PBM), nacionalidad, departamento de procedencia, ciudad de procedencia, área de conocimiento SNIES, puntaje global y puntaje de cada uno de los componentes** de quienes presentaron la prueba en la **Sede Palmira**.
+A continuación, la tabla tbl-FTablaSaber presenta los datos por **año, sexo, rango de edad, tipo de colegio, modalidad de admisión, estrato, Puntaje Básico de Matricula (PBM), nacionalidad, departamento de procedencia, ciudad de procedencia, área de conocimiento SNIES, puntaje global y puntaje de cada uno de los componentes** de quienes presentaron la prueba en la **Sede Palmira**.
 
 Los interesados en *imprimir*, *copiar* o *descargar* estas cifras, pueden hacerlo a través de las múltiples opciones que se ofrecen en la parte superior izquierda de la tabla que se presenta a continuación (Copiar, CSV, Excel, PDF e Imprimir). Así mismo, esta tabla, dada su naturaleza web, permiten filtrar los resultados por aquellas variables de interés.
 

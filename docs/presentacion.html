@@ -32,6 +32,7 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <link href="./Aspirantes.html" rel="next">
 <link href="./intro.html" rel="prev">
+<link href="./img/Logotipo_UNAL.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -42,11 +43,11 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 20,
   "language": {
     "search-no-results-text": "No results",
@@ -64,10 +65,39 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Boletin estadístico Sede Palmira</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://mjimenalopez24.github.io/BoletinSedePalmira/"><i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-reader-toggle nav-link" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
       <h1 class="quarto-secondary-nav-title">Presentación</h1>
@@ -78,13 +108,13 @@ ul.task-list li input[type="checkbox"] {
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">Boletin estadístico Sede Palmira</a> 
-    </div>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./" class="sidebar-logo-link">
+      <img src="./img/Logotipo_UNAL.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
       </div>
       <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
@@ -115,7 +145,27 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./PruebasSaber.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Pruebas Saber Pro</span></a>
+  <a href="./PoblacionEstudiantil.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Población estudiantil</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./MatriculadosPV.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Matriculados por primera vez</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Graduados.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Graduados</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./TalentoHumano.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Talento humano</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./PruebasSaber.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Pruebas Saber Pro</span></a>
   </div>
 </li>
     </ul>
@@ -147,8 +197,11 @@ ul.task-list li input[type="checkbox"] {
 <p>La Universidad Nacional de Colombia en su Plan Global de Desarrollo 2013-2015 “Calidad Académica y Autonomía Responsable” propuso como una de las metas en el Programa Gestión de Calidad y desarrollo organizacional, “Constituir la Unidad Estadística Nacional adscrita a la Oficina Nacional de Planeación”, con el propósito de definir, implementar y evaluar las políticas y el fomento de las buenas prácticas estadísticas que permitan disponer de información estratégica institucional con altos estándares de calidad.</p>
 <p>Mediante el Acuerdo 113 de 2013 del CSU fue creada la que actualmente es la Dirección Nacional de Planeación y Estadística, pues disponer de información pertinente, oportuna, válida y confiable, representa un gran papel para la toma de decisiones y la implementación de políticas institucionales en la búsqueda de un mejoramiento continuo en nuestro quehacer institucional.</p>
 <p>Es así como la Sede Palmira entrega a la comunidad universitaria y a la sociedad el séptimo Boletín Estadístico de la Sede Palmira que inició en el año 2009 y que busca recopilar las cifras más importantes de la Sede durante el último período, con una evolución de los últimos años que dan cuenta de la gestión académica realizada y aporta información pertinente al interior de la Sede para procesos de autoevaluación y mejoramiento continuo de nuestros programas curriculares y actividades misionales.</p>
-<p>Este séptimo Boletín de Sede presenta los indicadores básicos de la Sede del último periodo registrado, y su evolución histórica, información detallada de <a href="#Aspirantes">aspirantes, admitidos</a> y <a href="PobEst">estudiantes</a>, <a href="Doc">docencia</a>, <a href="Admini">administrativos</a>,…, que de acuerdo al interés particular de cada lector podrá conocer en detalle y dar el uso e interpretación que considere.</p>
+<p>Este séptimo Boletín de Sede presenta los indicadores básicos de la Sede del último periodo registrado, y su evolución histórica, información detallada de <a href="./Aspirantes.html">aspirantes y admitidos</a> y <a href="./PoblacionEstudiantil.html">estudiante</a>, <a href="Doc">docencia</a>, <a href="Admini">administrativos</a>,…, que de acuerdo al interés particular de cada lector podrá conocer en detalle y dar el uso e interpretación que considere.</p>
 <p>El Boletín Estadístico de la Sede presenta información complementaria a las cifras e indicadores que presenta la Oficina Nacional de Planeación anualmente en la Revista de Estadísticas e Indicadores de la Universidad Nacional, detallando o ampliando información de formación, estudiantes, bienestar e investigación propias de la Sede, que sirvan a los diferentes actores a proponer ideas para su desarrollo. Se entrega este Boletín para ser consultado por los integrantes de la comunidad universitaria para su conocimiento y aplicación en sus proyecciones o procesos de acreditación de programas en la Sede Palmira.</p>
+<div class="cell">
+
+</div>
 
 
 
@@ -264,6 +317,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+ Boletin estadístico
+  </li>  
+</ul>
+    </div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="https://www.palmira.unal.edu.co/">Universidad Nacional Sede Palmira</a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
 
 
 
