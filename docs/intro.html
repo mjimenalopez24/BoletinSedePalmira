@@ -29,6 +29,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
+<script src="site_libs/quarto-search/autocomplete-preset-algolia.umd.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./presentacion.html" rel="next">
 <link href="./index.html" rel="prev">
@@ -43,12 +44,20 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
+  "location": "sidebar",
+  "copy-button": true,
   "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
+  "panel-placement": "start",
+  "type": "textbox",
   "limit": 20,
+  "algolia": {
+    "application-id": "<AA9F0H72S2>",
+    "search-only-api-key": "<f282bdaf03fbe913393379f295d2b5af>",
+    "index-name": "<IndexBoletinPalmira>",
+    "analytics-events": false,
+    "show-logo": false,
+    "libDir": "site_libs"
+  },
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -61,6 +70,7 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
+<script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js"></script>
 
 <script src="site_libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
 <link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
@@ -99,6 +109,9 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./img/Logotipo_UNAL.png" alt="" class="navbar-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Boletin estadístico Sede Palmira</span>
     </a>
@@ -113,15 +126,17 @@ ul.task-list li input[type="checkbox"] {
 </i> 
  </a>
   </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.youtube.com/@Palmira_UNAL/featured"><i class="bi bi-youtube" role="img">
+</i> 
+ </a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.palmira.unal.edu.co/"><i class="bi bi-globe2" role="img">
+</i> 
+ </a>
+  </li>  
 </ul>
-              <div class="quarto-toggle-container">
-                  <a href="" class="quarto-reader-toggle nav-link" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
-              </div>
-              <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -265,8 +280,8 @@ ul.task-list li input[type="checkbox"] {
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="htmlwidget-0c39c4776606f4d7fd49" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0c39c4776606f4d7fd49">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;Número de estudiantes matriculados doctorado&quot;,&quot;Número de estudiantes matriculados maestría&quot;,&quot;Número de estudiantes matriculados pregrado&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;59&quot;,&quot;225&quot;,&quot;2634&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;55&quot;,&quot;183&quot;,&quot;2753&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;51&quot;,&quot;180&quot;,&quot;2793&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;51&quot;,&quot;165&quot;,&quot;2715&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;47&quot;,&quot;158&quot;,&quot;2665&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n<\/tr>","class":"compact nowrap hover row-border","extensions":["Buttons","KeyTable"],"caption":"<caption><\/caption>","data":[["Número de estudiantes matriculados pregrado","Número de estudiantes matriculados maestría","Número de estudiantes matriculados doctorado"],["2634","225","59"],["2753","183","55"],["2793","180","51"],["2715","165","51"],["2665","158","47"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th colspan=\"6\">Indicadores básicos de la Sede: Matriculados<\/th>\n    <\/tr>\n    <tr>\n      <th>Descripcion<\/th>\n      <th>2020_1<\/th>\n      <th>2020_2<\/th>\n      <th>2021_1<\/th>\n      <th>2021_2<\/th>\n      <th>2022_1<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"autoWidth":true,"columnDefs":[{"className":"dt-center","targets":[0,1,2,3,4,5]},[],{"width":"65px","targets":0}],"pageLength":8,"order":[[0,"desc"],[1,"asc"]],"dom":"Bfrtip","keys":true,"searchHighlight":true,"scrollX":true,"initComplete":"function(settings, json) {\n$(this.api().table().header()).css({'background-color':\n'#4CFF49'\n, 'color': '#000000'});\n}","language":{"processing":"Procesando...","lengthMenu":"Mostrar _MENU_ registros","zeroRecords":"No se encontraron resultados","emptyTable":"Ningún dato disponible en esta tabla","info":"Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros","infoEmpty":"Mostrando registros del 0 al 0 de un total de 0 registros","infoFiltered":"(filtrado de un total de _MAX_ registros)","infoPostFix":"","search":"Buscar:","url":"","infoThousands":",","loadingRecords":"Cargando...","paginate":{"first":"Primero","last":"Último","next":"Siguiente","previous":"Anterior"},"aria":{"sortAscending":"Activar para ordenar la columna de manera ascendente","sortDescending":"Activar para ordenar la columna de manera descendente"}},"buttons":[{"extend":"copy","text":"Copiar"},"csv","excel",{"extend":"pdf","pageSize":"A4","filename":"pdf","message":"","title":"Indicadores básicos de la Sede: Matriculados"},{"extend":"print","text":"Imprimir","pageSize":"A4","message":"","title":"Indicadores básicos de la Sede: Matriculados"}],"orderClasses":false,"orderCellsTop":true,"lengthMenu":[8,10,25,50,100]}},"evals":["options.initComplete"],"jsHooks":[]}</script>
+<div id="htmlwidget-773148f372cec16167ce" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-773148f372cec16167ce">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;Número de estudiantes matriculados doctorado&quot;,&quot;Número de estudiantes matriculados maestría&quot;,&quot;Número de estudiantes matriculados pregrado&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;59&quot;,&quot;225&quot;,&quot;2634&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;55&quot;,&quot;183&quot;,&quot;2753&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;51&quot;,&quot;180&quot;,&quot;2793&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;51&quot;,&quot;165&quot;,&quot;2715&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;47&quot;,&quot;158&quot;,&quot;2665&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n<\/tr>","class":"compact nowrap hover row-border","extensions":["Buttons","KeyTable"],"caption":"<caption><\/caption>","data":[["Número de estudiantes matriculados pregrado","Número de estudiantes matriculados maestría","Número de estudiantes matriculados doctorado"],["2634","225","59"],["2753","183","55"],["2793","180","51"],["2715","165","51"],["2665","158","47"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th colspan=\"6\">Indicadores básicos de la Sede: Matriculados<\/th>\n    <\/tr>\n    <tr>\n      <th>Descripcion<\/th>\n      <th>2020_1<\/th>\n      <th>2020_2<\/th>\n      <th>2021_1<\/th>\n      <th>2021_2<\/th>\n      <th>2022_1<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"autoWidth":true,"columnDefs":[{"className":"dt-center","targets":[0,1,2,3,4,5]},[],{"width":"65px","targets":0}],"pageLength":8,"order":[[0,"desc"],[1,"asc"]],"dom":"Bfrtip","keys":true,"searchHighlight":true,"scrollX":true,"initComplete":"function(settings, json) {\n$(this.api().table().header()).css({'background-color':\n'#8cc63f'\n, 'color': '#000000'});\n}","language":{"processing":"Procesando...","lengthMenu":"Mostrar _MENU_ registros","zeroRecords":"No se encontraron resultados","emptyTable":"Ningún dato disponible en esta tabla","info":"Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros","infoEmpty":"Mostrando registros del 0 al 0 de un total de 0 registros","infoFiltered":"(filtrado de un total de _MAX_ registros)","infoPostFix":"","search":"Buscar:","url":"","infoThousands":",","loadingRecords":"Cargando...","paginate":{"first":"Primero","last":"Último","next":"Siguiente","previous":"Anterior"},"aria":{"sortAscending":"Activar para ordenar la columna de manera ascendente","sortDescending":"Activar para ordenar la columna de manera descendente"}},"buttons":[{"extend":"copy","text":"Copiar"},"csv","excel",{"extend":"pdf","pageSize":"A4","filename":"pdf","message":"","title":"Indicadores básicos de la Sede: Matriculados"},{"extend":"print","text":"Imprimir","pageSize":"A4","message":"","title":"Indicadores básicos de la Sede: Matriculados"}],"orderClasses":false,"orderCellsTop":true,"lengthMenu":[8,10,25,50,100]}},"evals":["options.initComplete"],"jsHooks":[]}</script>
 </div>
 </div>
 <div class="cell">

@@ -5,7 +5,17 @@ project:
 book:
   title: "Boletin estadístico Sede Palmira"
   author: "Dirección Nacional de Planeación y Estadística"
-  reader-mode: true
+  author-title: "Autor"
+  reader-mode: false
+  search: 
+    location: sidebar
+    type: textbox
+    copy-button: true
+    algolia:
+      index-name: <IndexBoletinPalmira>
+      application-id: <AA9F0H72S2>
+      search-only-api-key: <f282bdaf03fbe913393379f295d2b5af>
+    
   favicon: 'img/Logotipo_UNAL.png'
   page-footer:
     left:
@@ -14,12 +24,17 @@ book:
       - text: "Universidad Nacional Sede Palmira"
         href: https://www.palmira.unal.edu.co/
   navbar:
-    search: true
+    logo: 'img/Logotipo_UNAL.png'
+    background: light
     right:
       - icon: github
         href: https://mjimenalopez24.github.io/BoletinSedePalmira/
         aria-label: GitHub
-    background: '#8cc63f'
+      - icon: youtube
+        href: https://www.youtube.com/@Palmira_UNAL/featured
+      - icon: globe2
+        href: https://www.palmira.unal.edu.co/
+        
   sidebar:
     logo: 'img/Logotipo_UNAL.png'
 

@@ -4,8 +4,8 @@ crossref:
   fig-title: 'Figura' 
   tbl-title: 'Tabla'     
   title-delim: '.'     
-  fig-prefix: 'Figura'  
-  tbl-prefix: 'Tabla'
+  fig-prefix: ''  
+  tbl-prefix: ''
 ---
 
 # Aspirantes y Admitidos {#sec-Aspirantes}
@@ -372,7 +372,7 @@ Asp_Pre_Tabla <- AspirantesPre %>% group_by(YEAR, SEMESTRE, DEP_RES, CIU_RES, SE
 #Tabla en HTML
 UnalR::Tabla.General(datos = Asp_Pre_Tabla,
                      encabezado = "Tabla histórico total de aspirantes por variables de interés",
-                     colorHead = "#4CFF49",
+                     colorHead = "#8cc63f",
                      colNames = c("Año","Semestre","Departamento de residencia","Ciudad de residencia","Sexo","Edad","Estrato","Admitido","Total"))
 
 ```
@@ -829,7 +829,7 @@ Adm_Pre_Tabla <- AdmitidosPre %>% group_by(YEAR, SEMESTRE, DEP_RES, CIU_RES, SEX
 #Tabla en HTML
 UnalR::Tabla.General(datos = Adm_Pre_Tabla,
                      encabezado = "Tabla histórico total de admitidos por variables de interés",
-                     colorHead = "#4CFF49",
+                     colorHead = "#8cc63f",
                      colNames = c("Año","Semestre","Departamento de residencia","Ciudad de residencia","Sexo","Edad","Estrato","Modalidad de inscripción","Facultad","Programa","Puntaje total","Total"))
 
 ```
@@ -1150,7 +1150,7 @@ Asp_Pos_Tabla <- AspirantesPos %>% group_by(YEAR, SEMESTRE, DEP_RES, CIU_RES, SE
 #Tabla en HTML
 UnalR::Tabla.General(datos = Asp_Pos_Tabla,
                      encabezado = "Tabla histórico total de aspirantes por variables de interés", 
-                     colorHead = "#4CFF49",
+                     colorHead = "#8cc63f",
                      colNames = c("Año","Semestre","Departamento de residencia","Ciudad de residencia","Sexo","Edad","Estrato","Admitido","Total"))
 
 ```
@@ -1524,7 +1524,7 @@ Adm_Pos_Tabla <- AdmitidosPos %>% group_by(YEAR, SEMESTRE, DEP_RES, CIU_RES, SEX
 #Tabla en HTML
 UnalR::Tabla.General(datos = Adm_Pos_Tabla,
                      encabezado = "Tabla histórico total de admitidos por variables de interés",
-                     colorHead = "#4CFF49",
+                     colorHead = "#8cc63f",
                      colNames = c("Año","Semestre","Departamento de residencia","Ciudad de residencia","Sexo","Edad","Estrato","Modalidad de inscripción", "Facultad","Programa","Total"))
 
 ```

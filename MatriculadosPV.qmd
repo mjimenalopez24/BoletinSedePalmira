@@ -4,8 +4,8 @@ crossref:
   fig-title: 'Figura' 
   tbl-title: 'Tabla'     
   title-delim: '.'     
-  fig-prefix: 'Figura'  
-  tbl-prefix: 'Tabla'
+  fig-prefix: ''  
+  tbl-prefix: ''
 ---
 
 # Matriculados por primera vez {#sec-MatPV}
@@ -52,22 +52,19 @@ MatriculadosPVPos <- MatriculadosPV %>% filter(TIPO_NIVEL == "Postgrado", MOD_AD
 tema <- 5
 ```
 
-Este capítulo presenta el consolidado de las principales características asociadas a la información estadística oficial de los estudiantes matriculados por primera vez en pregrado y postgrado en la **Sede Palmira** de la Universidad Nacional de Colombia. A continuación, se presenta una breve descripción de las secciones que hacen parte de este capítulo. 
+Este capítulo presenta el consolidado de las principales características asociadas a la información estadística oficial de los estudiantes matriculados por primera vez en pregrado y postgrado en la **Sede Palmira** de la Universidad Nacional de Colombia. A continuación, se presenta una breve descripción de las secciones que hacen parte de este capítulo.
 
+<h3>**Secciones**</h3>
 
-<h3>**Secciones**</h3> 
+-   [Estudiantes de pregrado -@sec-MatPVPre]: contiene la información oficial del total de estudiantes matriculados por primera vez en pregrado en la **Sede Palmira** de la Universidad Nacional de Colombia.
 
-
-* [Estudiantes de pregrado -@sec-MatPVPre]: contiene la información oficial del total de estudiantes matriculados por primera vez en pregrado en la **Sede Palmira** de la Universidad Nacional de Colombia.
-
-* [Estudiantes de postgrado -@sec-MatPVPos]: contiene la información oficial del total de estudiantes matriculados por primera vez en los programas de postgrado de la **Sede Palmira** de la Universidad Nacional de Colombia.
+-   [Estudiantes de postgrado -@sec-MatPVPos]: contiene la información oficial del total de estudiantes matriculados por primera vez en los programas de postgrado de la **Sede Palmira** de la Universidad Nacional de Colombia.
 
 <h3>**Metadatos**</h3>
 
 La construcción de las cifras oficiales de estudiantes matriculados por primera vez en la **Sede Palmira**, las definiciones que hacen parte de estas, así como las codificaciones y clasificaciones aquí empleadas se encuentran contenidas en la sección **Matriculados** del capítulo de *Metadatos* de las cifras oficiales generales que hacen parte de la página de [estadísticas](http://estadisticas.unal.edu.co/home/) de la Universidad Nacional de Colombia. Invitamos a los lectores a explorar y conocer estos metadatos los cuales, además de orientar y facilitar el entendimiento de la información acá expuesta, se encuentran disponibles en el siguiente enlace.
 
-* [Metadatos Cifras Oficiales Universidad Nacional de Colombia](http://estadisticas.unal.edu.co/menu-principal/cifras-generales/metadatos/cifras-generales/)
-
+-   [Metadatos Cifras Oficiales Universidad Nacional de Colombia](http://estadisticas.unal.edu.co/menu-principal/cifras-generales/metadatos/cifras-generales/)
 
 ## Pregrado {#sec-MatPVPre}
 
@@ -473,9 +470,9 @@ Agregar(TOTAL ~ YEAR + SEMESTRE,
               estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = Msj)) 
 ```
 
-### Tabla agregada 
+### Tabla agregada
 
-A continuación, la tabla @fig-F16MatPVPre presenta el agregado **histórico**, por **años, semestres, departamentos  y municipios de procedenecia, sexo, edad, estrato, tipo de admisión, facultad y programa** de los matriculados por primera vez en pregrado en la **Sede Palmira**.
+A continuación, la tabla @fig-F16MatPVPre presenta el agregado **histórico**, por **años, semestres, departamentos y municipios de procedenecia, sexo, edad, estrato, tipo de admisión, facultad y programa** de los matriculados por primera vez en pregrado en la **Sede Palmira**.
 
 Los interesados en *imprimir*, *copiar* o *descargar* estas cifras, pueden hacerlo a través de las múltiples opciones que se ofrecen en la parte superior izquierda de la tabla que se presenta a continuación (Copiar, CSV, Excel, PDF e Imprimir). Así mismo, esta tabla, dada su naturaleza web, permiten filtrar los resultados por aquellas variables de interés.
 
@@ -494,7 +491,7 @@ MatPV_Pre_Tabla <- MatriculadosPVPre %>% group_by(YEAR, SEMESTRE, DEP_PROC, CIU_
 #Tabla en HTML
 UnalR::Tabla.General(datos = MatPV_Pre_Tabla,
                      encabezado = "Tabla histórico total de matriculados por primera vez por variables de interés", 
-                     colorHead = "#4CFF49",
+                     colorHead = "#8cc63f",
                      colNames = c("Año","Semestre","Departamento de residencia","Ciudad de residencia","Sexo","Edad","Estrato","Modalidad de admisión","Facultad","Programa","Total"))
 
 ```
@@ -553,6 +550,7 @@ Agregar(SEXO ~ YEAR + SEMESTRE,
               libreria = c("highcharter"), 
               estilo = list(hc.Tema = tema, hc.Slider = FALSE, hc.Credits = Msj))
 ```
+
 <br>
 
 ```{r}
@@ -823,9 +821,9 @@ MatriculadosPVPos %>% filter(YEAR == ano, SEMESTRE == semestre) %$%
 
 ### Admitidos VS Matriculados por primera vez
 
-### Tabla agregada 
+### Tabla agregada
 
-A continuación, la tabla @fig-F14MatPVPos presenta el agregado **histórico**, por **años, semestres, departamentos  y municipios de procedenecia, sexo, edad, estrato, facultad y programa** de los matriculados por primera vez en posgrado en la **Sede Palmira**.
+A continuación, la tabla @fig-F14MatPVPos presenta el agregado **histórico**, por **años, semestres, departamentos y municipios de procedenecia, sexo, edad, estrato, facultad y programa** de los matriculados por primera vez en posgrado en la **Sede Palmira**.
 
 Los interesados en *imprimir*, *copiar* o *descargar* estas cifras, pueden hacerlo a través de las múltiples opciones que se ofrecen en la parte superior izquierda de la tabla que se presenta a continuación (Copiar, CSV, Excel, PDF e Imprimir). Así mismo, esta tabla, dada su naturaleza web, permiten filtrar los resultados por aquellas variables de interés.
 
@@ -844,9 +842,7 @@ MatPV_Pos_Tabla <- MatriculadosPVPos %>% group_by(YEAR, SEMESTRE, DEP_PROC, CIU_
 #Tabla en HTML
 UnalR::Tabla.General(datos = MatPV_Pos_Tabla,
                      encabezado = "Tabla histórico total de matriculados por primera vez por variables de interés", 
-                     colorHead = "#4CFF49",
+                     colorHead = "#8cc63f",
                      colNames = c("Año","Semestre","Departamento de residencia","Ciudad de residencia","Sexo","Edad","Estrato","Facultad","Programa","Total"))
 
 ```
-
-

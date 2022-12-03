@@ -102,7 +102,7 @@ UnalR::Tabla.General(
   datos = TablaIndicadoresMat,
   filtros = TRUE,
   encabezado = "Indicadores básicos de la Sede: Matriculados",
-  colorHead = "#4CFF49"
+  colorHead = "#8cc63f"
 )
 ```
 

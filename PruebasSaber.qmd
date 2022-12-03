@@ -4,8 +4,8 @@ crossref:
   fig-title: 'Figura' 
   tbl-title: 'Tabla'     
   title-delim: '.'     
-  fig-prefix: 'Figura'  
-  tbl-prefix: 'Tabla'
+  fig-prefix: ''  
+  tbl-prefix: ''
 ---
 
 # Pruebas Saber Pro {#sec-PruebasSaber}
@@ -191,7 +191,7 @@ UnalR::Tabla.General(
   datos = TABLA_PUNT_GLOBAL1,
   filtros = TRUE,
   encabezado = "Puntaje promedio global por sexo y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Sexo","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -274,7 +274,7 @@ UnalR::Tabla.General(
   datos = TABLA_PUNT_GLOBAL2,
   filtros = TRUE,
   encabezado = "Puntaje promedio global por edad y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Edad","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -357,7 +357,7 @@ UnalR::Tabla.General(
   datos = TABLA_PUNT_GLOBAL3,
   filtros = TRUE,
   encabezado = "Puntaje promedio global por tipo de colegio y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Tipo de colegio","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -440,7 +440,7 @@ Tabla.General(
   datos = TABLA_PUNT_GLOBAL4,
   filtros = TRUE,
   encabezado = "Puntaje promedio global por modalidad de admisión y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Modalidad admisión","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -523,7 +523,7 @@ Tabla.General(
   datos = TABLA_PUNT_GLOBAL5,
   filtros = TRUE,
   encabezado = "Puntaje promedio global por estrato y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Estrato","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -599,7 +599,7 @@ Tabla.General(
   datos = TABLA_PUNT_GLOBAL6,
   filtros = TRUE,
   encabezado = "Puntaje promedio global por PBM y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "PBM","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -675,7 +675,7 @@ Tabla.General(
   datos = TABLA_PUNT_GLOBAL7,
   filtros = TRUE,
   encabezado = "Puntaje promedio global por nacionalidad y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Nacionalidad","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -727,7 +727,7 @@ Tabla.General(
   datos = TABLA_PUNT_GLOBAL8,
   filtros = TRUE,
   encabezado = "Puntaje promedio global por departamento, municipio y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Departamento procedencia","Ciudad procedencia","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -803,7 +803,7 @@ Tabla.General(
   datos = TABLA_PUNT_GLOBAL9,
   filtros = TRUE,
   encabezado = "Puntaje promedio global por área del conocimiento SNIES y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Área de conocimiento","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -1149,7 +1149,7 @@ Tabla.General(
   datos = TABLA_PUNT_RAZO_CUANT1,
   filtros = TRUE,
   encabezado = "Puntaje promedio de razonamiento cuantitativo por sexo y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Sexo","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -1198,7 +1198,7 @@ Tabla.General(
   datos = TABLA_PUNT_RAZO_CUANT2,
   filtros = TRUE,
   encabezado = "Puntaje promedio de razonamiento cuantitativo por edad y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Edad","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -1247,7 +1247,7 @@ Tabla.General(
   datos = TABLA_PUNT_RAZO_CUANT3,
   filtros = TRUE,
   encabezado = "Puntaje promedio de razonamiento cuantitativo por tipo de colegio y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Tipo de colegio","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -1296,7 +1296,7 @@ Tabla.General(
   datos = TABLA_PUNT_RAZO_CUANT4,
   filtros = TRUE,
   encabezado = "Puntaje promedio de razonamiento cuantitativo por modalidad de admisión y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Modalidad admisión","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -1345,7 +1345,7 @@ Tabla.General(
   datos = TABLA_PUNT_RAZO_CUANT5,
   filtros = TRUE,
   encabezado = "Puntaje promedio de razonamiento cuantitativo por estrato y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Estrato","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -1394,7 +1394,7 @@ Tabla.General(
   datos = TABLA_PUNT_RAZO_CUANT6,
   filtros = TRUE,
   encabezado = "Puntaje promedio de razonamiento cuantitativo por PBM y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "PBM","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -1443,7 +1443,7 @@ Tabla.General(
   datos = TABLA_PUNT_RAZO_CUANT7,
   filtros = TRUE,
   encabezado = "Puntaje promedio de razonamiento cuantitativo por nacionalidad y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Nacionalidad","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -1493,7 +1493,7 @@ Tabla.General(
   datos = TABLA_PUNT_RAZO_CUANT8,
   filtros = TRUE,
   encabezado = "Puntaje promedio de razonamiento cuantitativo por departamento, municipio y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Departamento procedencia","Ciudad procedencia","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -1542,7 +1542,7 @@ Tabla.General(
   datos = TABLA_PUNT_RAZO_CUANT9,
   filtros = TRUE,
   encabezado = "Puntaje promedio de razonamiento cuantitativo por área de conocimiento y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Área de conocimiento","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -1646,7 +1646,7 @@ Tabla.General(
   datos = TABLA_PUNT_INGLES1,
   filtros = TRUE,
   encabezado = "Puntaje promedio de inglés por sexo y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Sexo","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -1695,7 +1695,7 @@ Tabla.General(
   datos = TABLA_PUNT_INGLES2,
   filtros = TRUE,
   encabezado = "Puntaje promedio de inglés por edad y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Edad","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -1744,7 +1744,7 @@ Tabla.General(
   datos = TABLA_PUNT_INGLES3,
   filtros = TRUE,
   encabezado = "Puntaje promedio de inglés por tipo de colegio y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Tipo de colegio","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -1793,7 +1793,7 @@ Tabla.General(
   datos = TABLA_PUNT_INGLES4,
   filtros = TRUE,
   encabezado = "Puntaje promedio de inglés por modalidad de admisión y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Modalidad admisión","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -1842,7 +1842,7 @@ Tabla.General(
   datos = TABLA_PUNT_INGLES5,
   filtros = TRUE,
   encabezado = "Puntaje promedio de inglés por estrato y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Estrato","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -1891,7 +1891,7 @@ Tabla.General(
   datos = TABLA_PUNT_INGLES6,
   filtros = TRUE,
   encabezado = "Puntaje promedio de inglés por PBM y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "PBM","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -1940,7 +1940,7 @@ Tabla.General(
   datos = TABLA_PUNT_INGLES7,
   filtros = TRUE,
   encabezado = "Puntaje promedio de inglés por nacionalidad y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Nacionalidad","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -1992,7 +1992,7 @@ Tabla.General(
   datos = TABLA_PUNT_INGLES8,
   filtros = TRUE,
   encabezado = "Puntaje promedio de inglés por departamento, municipio y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Departamento procedencia","Ciudad procedencia","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -2041,7 +2041,7 @@ Tabla.General(
   datos = TABLA_PUNT_INGLES9,
   filtros = TRUE,
   encabezado = "Puntaje promedio de inglés por área de conocimiento y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Área de conocimiento","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -2145,7 +2145,7 @@ Tabla.General(
   datos = TABLA_PUNT_LECT_CRIT1,
   filtros = TRUE,
   encabezado = "Puntaje promedio de lectura crítica por sexo y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Sexo","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -2194,7 +2194,7 @@ Tabla.General(
   datos = TABLA_PUNT_LECT_CRIT2,
   filtros = TRUE,
   encabezado = "Puntaje promedio de lectura crítica por edad y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Edad","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -2243,7 +2243,7 @@ Tabla.General(
   datos = TABLA_PUNT_LECT_CRIT3,
   filtros = TRUE,
   encabezado = "Puntaje promedio de lectura crítica por tipo de colegio y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Tipo de colegio","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -2291,7 +2291,7 @@ Tabla.General(
   datos = TABLA_PUNT_LECT_CRIT4,
   filtros = TRUE,
   encabezado = "Puntaje promedio de lectura crítica por modalidad de admisión y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Modalidad admisión","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -2340,7 +2340,7 @@ Tabla.General(
   datos = TABLA_PUNT_LECT_CRIT5,
   filtros = TRUE,
   encabezado = "Puntaje promedio de lectura crítica por estrato y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Estrato","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -2389,7 +2389,7 @@ Tabla.General(
   datos = TABLA_PUNT_LECT_CRIT6,
   filtros = TRUE,
   encabezado = "Puntaje promedio de lectura crítica por PBM y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "PBM","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -2438,7 +2438,7 @@ Tabla.General(
   datos = TABLA_PUNT_LECT_CRIT7,
   filtros = TRUE,
   encabezado = "Puntaje promedio de lectura crítica por nacionalidad y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Nacionalidad","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -2490,7 +2490,7 @@ UnalR::Tabla.General(
   datos = TABLA_PUNT_LECT_CRIT8,
   filtros = TRUE,
   encabezado = "Puntaje promedio de lectura crítica por departamento, municipio y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Departamento procedencia","Ciudad procedencia","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -2539,7 +2539,7 @@ Tabla.General(
   datos = TABLA_PUNT_LECT_CRIT9,
   filtros = TRUE,
   encabezado = "Puntaje promedio de lectura crítica por área de conocimiento y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Área de conocimiento","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -2643,7 +2643,7 @@ Tabla.General(
   datos = TABLA_PUNT_COMP_CIUD1,
   filtros = TRUE,
   encabezado = "Puntaje promedio de competencias ciudadanas por sexo y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Área de conocimiento","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -2692,7 +2692,7 @@ Tabla.General(
   datos = TABLA_PUNT_COMP_CIUD2,
   filtros = TRUE,
   encabezado = "Puntaje promedio de competencias ciudadanas por edad y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Edad","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -2741,7 +2741,7 @@ Tabla.General(
   datos = TABLA_PUNT_COMP_CIUD3,
   filtros = TRUE,
   encabezado = "Puntaje promedio de competencias ciudadanas por tipo de colegio y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Tipo de colegio","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -2790,7 +2790,7 @@ Tabla.General(
   datos = TABLA_PUNT_COMP_CIUD4,
   filtros = TRUE,
   encabezado = "Puntaje promedio de competencias ciudadanas por modalidad de admisión y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Modalidad admisión","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -2839,7 +2839,7 @@ Tabla.General(
   datos = TABLA_PUNT_COMP_CIUD5,
   filtros = TRUE,
   encabezado = "Puntaje promedio de competencias ciudadanas por estrato y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Estrato","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -2888,7 +2888,7 @@ Tabla.General(
   datos = TABLA_PUNT_COMP_CIUD6,
   filtros = TRUE,
   encabezado = "Puntaje promedio de competencias ciudadanas por PBM y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "PBM","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -2937,7 +2937,7 @@ Tabla.General(
   datos = TABLA_PUNT_COMP_CIUD7,
   filtros = TRUE,
   encabezado = "Puntaje promedio de competencias ciudadanas por nacionalidad y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Nacionalidad","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -2989,7 +2989,7 @@ Tabla.General(
   datos = TABLA_PUNT_COMP_CIUD8,
   filtros = TRUE,
   encabezado = "Puntaje promedio de competencias ciudadanas por departamento, municipio y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Departamento procedencia","Ciudad procedencia","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -3038,7 +3038,7 @@ Tabla.General(
   datos = TABLA_PUNT_COMP_CIUD9,
   filtros = TRUE,
   encabezado = "Puntaje promedio de competencias ciudadanas por área de conocimiento y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Área de conocimiento","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -3142,7 +3142,7 @@ Tabla.General(
   datos = TABLA_PUNT_COMU_ESCR1,
   filtros = TRUE,
   encabezado = "Puntaje promedio de comunicación escrita por sexo y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Sexo","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -3191,7 +3191,7 @@ Tabla.General(
   datos = TABLA_PUNT_COMU_ESCR2,
   filtros = TRUE,
   encabezado = "Puntaje promedio de comunicación escrita por edad y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Edad","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -3240,7 +3240,7 @@ Tabla.General(
   datos = TABLA_PUNT_COMU_ESCR3,
   filtros = TRUE,
   encabezado = "Puntaje promedio de comunicación escrita por tipo de colegio y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Tipo de colegio","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -3288,7 +3288,7 @@ Tabla.General(
   datos = TABLA_PUNT_COMU_ESCR4,
   filtros = TRUE,
   encabezado = "Puntaje promedio de comunicación escrita por modalidad de admisión y año",
-  colorHead = "#4CFF49"
+  colorHead = "#8cc63f"
 )
 ```
 
@@ -3336,7 +3336,7 @@ Tabla.General(
   datos = TABLA_PUNT_COMU_ESCR5,
   filtros = TRUE,
   encabezado = "Puntaje promedio de comunicación escrita por estrato y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Estrato","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -3385,7 +3385,7 @@ Tabla.General(
   datos = TABLA_PUNT_COMU_ESCR6,
   filtros = TRUE,
   encabezado = "Puntaje promedio de comunicación escrita por PBM y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "PBM","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -3434,7 +3434,7 @@ Tabla.General(
   datos = TABLA_PUNT_COMU_ESCR7,
   filtros = TRUE,
   encabezado = "Puntaje promedio de comunicación escrita por nacionalidad y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Nacionalidad","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -3486,7 +3486,7 @@ Tabla.General(
   datos = TABLA_PUNT_COMU_ESCR8,
   filtros = TRUE,
   encabezado = "Puntaje promedio de comunicación escrita por departamento, municipio y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Departamento procedencia","Ciudad procedencia","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -3535,7 +3535,7 @@ Tabla.General(
   datos = TABLA_PUNT_COMU_ESCR9,
   filtros = TRUE,
   encabezado = "Puntaje promedio de comunicación escrita por área de conocimiento y año",
-  colorHead = "#4CFF49",
+  colorHead = "#8cc63f",
   colNames = c("Año", "Área de conocimiento","Puntaje Promedio","Desv. estándar","Total")
 )
 ```
@@ -3563,7 +3563,7 @@ Saber_tabla <- SaberPro %>% select(YEAR, SEXO, CAT_EDAD, TIPO_COL, MOD_ADM, ESTR
 #Tabla en HTML
 UnalR::Tabla.General(datos = Saber_tabla,
                      encabezado = "Tabla histórico puntajes de la prueba Saber Pro y variables de interés", 
-                     colorHead = "#4CFF49",
+                     colorHead = "#8cc63f",
                      colNames = c("Año","Sexo","Edad","Tipo de colegio","Modalidad de admisión","Estrato","PBM","Nacionalidad","Ciudad de procedencia","Área de conocimiento SNIES","Puntaje global","Puntaje Competencias ciudadanas", "Puntaje Comunicación escrita","Puntaje Inglés","Puntaje Lectura crítica","Puntaje Razonamiento cuantitativo"))
 
 ```
